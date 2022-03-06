@@ -1,3 +1,5 @@
+import { QueryClient } from "react-query";
+
 export {};
 
 declare global {
@@ -6,5 +8,6 @@ declare global {
 	interface IStoreProvider {
 		children: ReactNode;
 		hydrationData?: IStoreHydrationData;
+		queryClient: QueryClient;
 	}
 }

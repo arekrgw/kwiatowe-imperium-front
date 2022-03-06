@@ -10,7 +10,9 @@ import { Hydrate, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { getQueryClient } from "@app/api";
 import { StoreProvider } from "@stores";
+import { enableStaticRendering } from "mobx-react-lite";
 
+enableStaticRendering(typeof window === "undefined");
 const clientSideEmotionCache = createEmotionCache();
 
 interface MyAppProps extends AppProps {
@@ -22,8 +24,6 @@ if (typeof window !== "undefined") {
 	window.APP_THEME = theme;
 }
 
-const queryClient = getQueryClient();
-
 function MyApp(props: MyAppProps) {
 	const {
 		Component,
@@ -31,7 +31,7 @@ function MyApp(props: MyAppProps) {
 		pageProps,
 		hydrationData,
 	} = props;
-	// const [queryClient] = useState(getQueryClient);
+	const [queryClient] = useState(getQueryClient);
 
 	return (
 		<CacheProvider value={emotionCache}>
@@ -42,7 +42,10 @@ function MyApp(props: MyAppProps) {
 				<CssBaseline />
 				<QueryClientProvider client={queryClient}>
 					<Hydrate state={pageProps.dehydratedState}>
-						<StoreProvider hydrationData={hydrationData}>
+						<StoreProvider
+							hydrationData={hydrationData}
+							queryClient={queryClient}
+						>
 							<Component {...pageProps} />
 						</StoreProvider>
 						<ReactQueryDevtools />

@@ -11,6 +11,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { getQueryClient } from "@app/api";
 import { StoreProvider } from "@stores";
 import { enableStaticRendering } from "mobx-react-lite";
+import Layout from "@components/Layout";
 
 enableStaticRendering(typeof window === "undefined");
 const clientSideEmotionCache = createEmotionCache();
@@ -46,7 +47,9 @@ function MyApp(props: MyAppProps) {
 							hydrationData={hydrationData}
 							queryClient={queryClient}
 						>
-							<Component {...pageProps} />
+							<Layout>
+								<Component {...pageProps} />
+							</Layout>
 						</StoreProvider>
 						<ReactQueryDevtools />
 					</Hydrate>

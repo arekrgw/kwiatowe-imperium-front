@@ -1,5 +1,5 @@
 import { getQueryClient } from "@app/api";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useStore } from "@stores";
 import { observer } from "mobx-react-lite";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
@@ -16,7 +16,6 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 	const queryClient = getQueryClient();
 	await queryClient.prefetchQuery("films", getFilms);
 
-	const film = "Kappa";
 	return {
 		props: { dehydratedState: dehydrate(queryClient) },
 	};
@@ -31,6 +30,7 @@ const Home = (
 	return (
 		<div>
 			<Typography variant="h1">Home</Typography>
+			<Button variant="contained">Go for it</Button>
 			<Typography>{mainStore.film}</Typography>
 			{JSON.stringify(data)}
 		</div>

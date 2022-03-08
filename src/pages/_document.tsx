@@ -1,16 +1,13 @@
 import * as React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
-import theme from "@styles";
 import createEmotionCache from "@app/createEmotionCache";
-
-export default class MyDocument extends Document {
+class MyDocument extends Document {
 	render() {
 		return (
 			<Html lang="en">
 				<Head>
 					{/* PWA primary color */}
-					<meta name="theme-color" content={theme.palette.primary.main} />
 					<link rel="shortcut icon" href="/static/favicon.ico" />
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
 					<link
@@ -19,7 +16,7 @@ export default class MyDocument extends Document {
 						crossOrigin=""
 					/>
 					<link
-						href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;700&display=swap"
+						href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
 						rel="stylesheet"
 					/>
 					{(this.props as any).emotionStyleTags}
@@ -63,3 +60,5 @@ MyDocument.getInitialProps = async (ctx) => {
 		emotionStyleTags,
 	};
 };
+
+export default MyDocument;

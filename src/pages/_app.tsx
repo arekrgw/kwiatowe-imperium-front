@@ -1,4 +1,4 @@
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, useTheme } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -38,6 +38,7 @@ function MyApp(props: MyAppProps) {
 		<CacheProvider value={emotionCache}>
 			<Head>
 				<meta name="viewport" content="initial-scale=1, width=device-width" />
+				<meta name="theme-color" content={theme.palette.secondary.main} />
 			</Head>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />

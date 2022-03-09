@@ -8,9 +8,16 @@ interface LogoProps {}
 const Logo = (props: LogoProps) => {
 	return (
 		<Link href={routes.home} passHref>
-			<Box sx={{ height: "40px", width: "100%", position: "relative" }}>
+			<Box
+				sx={{
+					height: "40px",
+					width: "100%",
+					position: "relative",
+				}}
+			>
 				<Image
-					src="/logo2x.png"
+					priority
+					src="/logo.png"
 					alt="kwiatowe-imperium"
 					layout="fill"
 					objectFit="contain"

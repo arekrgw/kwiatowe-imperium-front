@@ -12,6 +12,8 @@ import { getQueryClient } from "@app/api";
 import { StoreProvider } from "@stores";
 import { enableStaticRendering } from "mobx-react-lite";
 import Layout from "@components/Layout";
+import { useRouter } from "next/router";
+import { GlobalStyle } from "@styles/globalStyles";
 
 enableStaticRendering(typeof window === "undefined");
 const clientSideEmotionCache = createEmotionCache();
@@ -33,7 +35,8 @@ function MyApp(props: MyAppProps) {
 		hydrationData,
 	} = props;
 	const [queryClient] = useState(getQueryClient);
-
+	const router = useRouter();
+	console.log(router);
 	return (
 		<CacheProvider value={emotionCache}>
 			<Head>
@@ -42,6 +45,7 @@ function MyApp(props: MyAppProps) {
 			</Head>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
+				<GlobalStyle />
 				<QueryClientProvider client={queryClient}>
 					<Hydrate state={pageProps.dehydratedState}>
 						<StoreProvider

@@ -14,6 +14,7 @@ const MobileMenuButton = (props: MobileMenuButtonProps) => {
 				position: "fixed",
 				bottom: "15px",
 				right: "15px",
+				zIndex: 98,
 				[theme.breakpoints.up("sm")]: { display: "none" },
 			})}
 		>

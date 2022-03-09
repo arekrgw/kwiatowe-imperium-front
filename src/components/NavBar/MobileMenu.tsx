@@ -7,12 +7,17 @@ import Slide from "@mui/material/Slide";
 import { Fade } from "@mui/material";
 import { useSwipeable } from "react-swipeable";
 import MobileNavigationList from "./MobileNavigationList";
+import Logo from "./Logo";
 
 interface MobileMenuProps {}
 
 const MobileMenu: FC<MobileMenuProps> = () => {
 	const { mainStore } = useStore();
-	const handlers = useSwipeable({ onSwipedLeft: mainStore.hideMenu });
+
+	const handlers = useSwipeable({
+		onSwipedLeft: mainStore.hideMenu,
+	});
+
 	return (
 		<Box
 			sx={(theme) => ({ [theme.breakpoints.up("sm")]: { display: "none" } })}
@@ -52,6 +57,9 @@ const MobileMenu: FC<MobileMenuProps> = () => {
 					}}
 					{...handlers}
 				>
+					<Box sx={{ py: "30px" }}>
+						<Logo />
+					</Box>
 					<MobileNavigationList />
 				</Box>
 			</Slide>

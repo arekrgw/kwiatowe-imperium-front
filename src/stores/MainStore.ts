@@ -1,10 +1,12 @@
 import { makeAutoObservable } from "mobx";
-
+import { RootStore } from "./RootStore";
 export class MainStore {
+	parentStore: RootStore;
 	isMenuOpen = false;
 
-	constructor() {
+	constructor(parentStore: RootStore) {
 		makeAutoObservable(this);
+		this.parentStore = parentStore;
 	}
 
 	hideMenu = () => {

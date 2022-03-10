@@ -4,6 +4,7 @@ import { useStore } from "@stores";
 import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
 import { FC, useCallback, useEffect } from "react";
+import DesktopMenu from "./DesktopMenu";
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 import MobileMenuButton from "./MobileMenuButton";
@@ -33,12 +34,15 @@ const NavBar: FC<NavBarProps> = () => {
 				zIndex: 98,
 				[theme.breakpoints.up("sm")]: {
 					position: "static",
+					justifyContent: "space-between",
+					px: "20px",
 				},
 			})}
 		>
 			<Logo />
 			<MobileMenuButton />
 			<MobileMenu />
+			<DesktopMenu />
 		</Box>
 	);
 };

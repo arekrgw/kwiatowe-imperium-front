@@ -1,6 +1,12 @@
 import menuConfiguration from "@app/menuConfiguration";
 import ListItemButtonLink from "@components/ListItemButtonLink";
-import { alpha, List, ListItemText, Typography } from "@mui/material";
+import {
+	alpha,
+	List,
+	ListItemIcon,
+	ListItemText,
+	Typography,
+} from "@mui/material";
 import Box from "@mui/material/Box";
 import { useStore } from "@stores";
 import { observer } from "mobx-react-lite";
@@ -28,6 +34,11 @@ const MobileNavigationList = (props: MobileNavigationListProps) => {
 						href={menuItem.href}
 						onClick={mainStore.hideMenu}
 					>
+						<ListItemIcon
+							sx={{ color: "secondary.contrastText", minWidth: "40px" }}
+						>
+							<menuItem.Icon />
+						</ListItemIcon>
 						<ListItemText
 							primary={<Typography variant="h6">{menuItem.name}</Typography>}
 						/>

@@ -57,7 +57,7 @@ const MobileMenu: FC<MobileMenuProps> = () => {
 					}}
 					{...handlers}
 				>
-					<Box sx={{ py: "30px" }}>
+					<Box sx={{ py: "30px", display: "flex", justifyContent: "center" }}>
 						<Logo />
 					</Box>
 					<MobileNavigationList />

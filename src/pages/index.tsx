@@ -4,6 +4,7 @@ import { Button, Typography } from "@mui/material";
 import { useStore } from "@stores";
 import { observer } from "mobx-react-lite";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Link from "next/link";
 import { dehydrate, useQuery } from "react-query";
 
 const getFilms = async () =>

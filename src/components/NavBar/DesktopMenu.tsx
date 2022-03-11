@@ -1,6 +1,7 @@
 import menuConfiguration from "@app/menuConfiguration";
 import ButtonLink from "@components/ButtonLink";
 import { Stack } from "@mui/material";
+import DesktopMenuItem from "./DesktopMenuItem";
 
 interface DesktopMenuProps {}
 
@@ -15,17 +16,7 @@ const DesktopMenu = (props: DesktopMenuProps) => {
 			})}
 		>
 			{menuConfiguration.map((item) => (
-				<ButtonLink
-					variant="contained"
-					size="small"
-					color="secondary"
-					sx={{ backgroundColor: "green.900" }}
-					key={item.href}
-					href={item.href}
-					startIcon={<item.Icon />}
-				>
-					{item.name}
-				</ButtonLink>
+				<DesktopMenuItem key={item.href} menuItem={item} />
 			))}
 		</Stack>
 	);

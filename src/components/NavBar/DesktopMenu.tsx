@@ -16,7 +16,7 @@ const DesktopMenu = (props: DesktopMenuProps) => {
 			})}
 		>
 			{menuConfiguration.map((item) => (
-				<DesktopMenuItem key={item.href} menuItem={item} />
+				<DesktopMenuItem key={item.key} menuItem={item} />
 			))}
 		</Stack>
 	);

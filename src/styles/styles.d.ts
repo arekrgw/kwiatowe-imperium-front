@@ -27,9 +27,4 @@ declare module "@mui/material/styles" {
 		green?: Color;
 		brown?: Color;
 	}
-	// interface Theme {
-	// 	palette: {
-	// 		secondary: Color & PaletteColor;
-	// 	};
-	// }
 }

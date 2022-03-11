@@ -1,6 +1,7 @@
-import { CssBaseline, useTheme } from "@mui/material";
+import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
-import type { AppProps } from "next/app";
+import type { AppContext, AppInitialProps, AppLayoutProps } from "next/app";
+import type { NextComponentType } from "next";
 import Head from "next/head";
 import theme from "@styles";
 import createEmotionCache from "@app/createEmotionCache";
@@ -18,7 +19,7 @@ import { GlobalStyle } from "@styles/globalStyles";
 enableStaticRendering(typeof window === "undefined");
 const clientSideEmotionCache = createEmotionCache();
 
-interface MyAppProps extends AppProps {
+interface MyAppProps extends AppLayoutProps {
 	emotionCache?: EmotionCache;
 	hydrationData?: IStoreHydrationData;
 }
@@ -27,7 +28,9 @@ if (typeof window !== "undefined") {
 	window.APP_THEME = theme;
 }
 
-function MyApp(props: MyAppProps) {
+const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = (
+	props: MyAppProps
+) => {
 	const {
 		Component,
 		emotionCache = clientSideEmotionCache,
@@ -36,7 +39,9 @@ function MyApp(props: MyAppProps) {
 	} = props;
 	const [queryClient] = useState(getQueryClient);
 	const router = useRouter();
-	console.log(router);
+
+	const getLayout = Component.getLayout;
+
 	return (
 		<CacheProvider value={emotionCache}>
 			<Head>
@@ -52,9 +57,13 @@ function MyApp(props: MyAppProps) {
 							hydrationData={hydrationData}
 							queryClient={queryClient}
 						>
-							<Layout>
-								<Component {...pageProps} />
-							</Layout>
+							{getLayout ? (
+								getLayout(<Component {...pageProps} />)
+							) : (
+								<Layout>
+									<Component {...pageProps} />
+								</Layout>
+							)}
 						</StoreProvider>
 						<ReactQueryDevtools />
 					</Hydrate>
@@ -62,6 +71,6 @@ function MyApp(props: MyAppProps) {
 			</ThemeProvider>
 		</CacheProvider>
 	);
-}
+};
 
 export default MyApp;

@@ -54,6 +54,8 @@ const MobileMenu: FC<MobileMenuProps> = () => {
 						top: 0,
 						left: 0,
 						zIndex: "100",
+						overflowY: "auto",
+						pb: "20px",
 					}}
 					{...handlers}
 				>

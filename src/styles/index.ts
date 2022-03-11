@@ -3,7 +3,7 @@ import typography from "@styles/typography";
 import palette from "@styles/palettle";
 import components from "@styles/components";
 
-let theme = createTheme({ typography, components: {} });
+let theme = createTheme({ typography });
 
 theme = responsiveFontSizes(theme);
 

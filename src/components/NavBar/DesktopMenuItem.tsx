@@ -8,6 +8,7 @@ import {
 	bindPopover,
 } from "material-ui-popup-state/hooks";
 import HoverPopover from "material-ui-popup-state/HoverPopover";
+import { FormattedMessage } from "react-intl";
 import ExtendedMenu from "./ExtendedMenu";
 
 interface DesktopMenuItemProps {
@@ -31,7 +32,7 @@ const DesktopMenuItem = ({ menuItem }: DesktopMenuItemProps) => {
 				href={menuItem.href}
 				startIcon={menuItem.Icon ? <menuItem.Icon /> : undefined}
 			>
-				{menuItem.name}
+				<FormattedMessage id={menuItem.name} />
 			</ButtonLink>
 		);
 
@@ -46,11 +47,11 @@ const DesktopMenuItem = ({ menuItem }: DesktopMenuItemProps) => {
 				endIcon={menuItem.extended ? <ArrowDropDownIcon /> : undefined}
 				{...bindHover(popupState)}
 			>
-				{menuItem.name}
+				<FormattedMessage id={menuItem.name} />
 			</Button>
 			<HoverPopover
 				{...bindPopover(popupState)}
-				sx={{ mt: "5px" }}
+				PaperProps={{ sx: { mt: "5px" } }}
 				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
 				transformOrigin={{ vertical: "top", horizontal: "center" }}
 				disableScrollLock

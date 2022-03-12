@@ -1,20 +1,24 @@
+import { getQueryClient } from "@app/api";
+import createEmotionCache from "@app/createEmotionCache";
+import Layout from "@components/Layout";
+import { CacheProvider, EmotionCache } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
-import type { AppContext, AppInitialProps, AppLayoutProps } from "next/app";
-import type { NextComponentType } from "next";
-import Head from "next/head";
+import { StoreProvider } from "@stores";
 import theme from "@styles";
-import createEmotionCache from "@app/createEmotionCache";
-import { CacheProvider, EmotionCache } from "@emotion/react";
-import { useState } from "react";
+import { GlobalStyle } from "@styles/globalStyles";
+import { enableStaticRendering } from "mobx-react-lite";
+import type { NextComponentType } from "next";
+import type { AppContext, AppInitialProps, AppLayoutProps } from "next/app";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { useMemo, useState } from "react";
+import { IntlProvider } from "react-intl";
 import { Hydrate, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { getQueryClient } from "@app/api";
-import { StoreProvider } from "@stores";
-import { enableStaticRendering } from "mobx-react-lite";
-import Layout from "@components/Layout";
-import { useRouter } from "next/router";
-import { GlobalStyle } from "@styles/globalStyles";
+
+import en from "@translations/en.json";
+import pl from "@translations/pl.json";
 
 enableStaticRendering(typeof window === "undefined");
 const clientSideEmotionCache = createEmotionCache();
@@ -40,6 +44,14 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = (
 	const [queryClient] = useState(getQueryClient);
 	const router = useRouter();
 
+	const [shortLocale] = router.locale ? router.locale.split("-") : ["en"];
+
+	const messages = useMemo(() => {
+		if (shortLocale === "pl") return pl;
+		if (shortLocale === "en") return en;
+		return {};
+	}, [shortLocale]);
+
 	const getLayout = Component.getLayout;
 
 	return (
@@ -57,13 +69,15 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = (
 							hydrationData={hydrationData}
 							queryClient={queryClient}
 						>
-							{getLayout ? (
-								getLayout(<Component {...pageProps} />)
-							) : (
-								<Layout>
-									<Component {...pageProps} />
-								</Layout>
-							)}
+							<IntlProvider messages={messages} locale={shortLocale}>
+								{getLayout ? (
+									getLayout(<Component {...pageProps} />)
+								) : (
+									<Layout>
+										<Component {...pageProps} />
+									</Layout>
+								)}
+							</IntlProvider>
 						</StoreProvider>
 						<ReactQueryDevtools />
 					</Hydrate>

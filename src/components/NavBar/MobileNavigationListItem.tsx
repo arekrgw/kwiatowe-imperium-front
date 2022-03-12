@@ -16,6 +16,7 @@ import { observer } from "mobx-react-lite";
 import { useStore } from "@stores";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
+import { FormattedMessage } from "react-intl";
 
 interface MobileNavigationListItemProps {
 	menuItem: MenuItem;
@@ -53,7 +54,11 @@ const MobileNavigationListItem: FC<MobileNavigationListItemProps> = ({
 					</ListItemIcon>
 				)}
 				<ListItemText
-					primary={<Typography variant="h6">{menuItem.name}</Typography>}
+					primary={
+						<Typography variant="h6">
+							<FormattedMessage id={menuItem.name} />
+						</Typography>
+					}
 				/>
 			</ListItemButtonLink>
 		);
@@ -72,7 +77,11 @@ const MobileNavigationListItem: FC<MobileNavigationListItemProps> = ({
 					</ListItemIcon>
 				)}
 				<ListItemText
-					primary={<Typography variant="h6">{menuItem.name}</Typography>}
+					primary={
+						<Typography variant="h6">
+							<FormattedMessage id={menuItem.name} />
+						</Typography>
+					}
 				/>
 				{Icon && <Icon />}
 			</ListItemButton>
@@ -99,7 +108,11 @@ const MobileNavigationListItem: FC<MobileNavigationListItemProps> = ({
 								</ListItemIcon>
 							)}
 							<ListItemText
-								primary={<Typography variant="h6">{it.name}</Typography>}
+								primary={
+									<Typography variant="h6">
+										<FormattedMessage id={menuItem.name} />
+									</Typography>
+								}
 							/>
 						</ListItemButtonLink>
 					))}

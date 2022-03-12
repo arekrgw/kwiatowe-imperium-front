@@ -21,7 +21,8 @@
 			"@styles": ["src/styles"],
 			"@styles/*": ["src/styles/*"],
 			"@stores": ["src/stores"],
-			"@stores/*": ["src/stores/*"]
+			"@stores/*": ["src/stores/*"],
+			"@translations/*": ["src/translations/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

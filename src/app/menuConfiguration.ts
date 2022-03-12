@@ -23,14 +23,14 @@ export type MenuItem = MenuItemSingle | MenuItemExtended;
 const menuConfiguration: MenuItem[] = [
 	{
 		__typename: "MenuItemSingle",
-		name: "Strona główna",
+		name: "menu.home",
 		href: "/",
 		key: "home",
 		Icon: HomeIcon,
 	},
 	{
 		__typename: "MenuItemExtended",
-		name: "Rośliny",
+		name: "menu.flowers",
 		key: "flowers",
 		Icon: LocalFloristIcon,
 		extended: [
@@ -81,7 +81,7 @@ const menuConfiguration: MenuItem[] = [
 	{
 		__typename: "MenuItemSingle",
 		key: "acc",
-		name: "Konto",
+		name: "menu.account",
 		href: "/account",
 		Icon: PersonIcon,
 	},

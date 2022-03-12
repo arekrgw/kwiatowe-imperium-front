@@ -1,8 +1,8 @@
-import { MenuItem, MenuItemSingle } from "@app/menuConfiguration";
-import { Tooltip, useTheme, Stack, Typography, Box } from "@mui/material";
-import { FC } from "react";
+import { MenuItemSingle } from "@app/menuConfiguration";
+import { useTheme, Stack, Typography, Box } from "@mui/material";
 import Link from "@components/Link";
 import { ExtendedMenuContent } from "./style";
+import { FormattedMessage } from "react-intl";
 
 interface ExtendedMenuProps {
 	items: MenuItemSingle[];
@@ -33,7 +33,9 @@ const ExtendedMenu = ({ items }: ExtendedMenuProps) => {
 								},
 							})}
 						>
-							<Typography variant="body1">{it.name}</Typography>
+							<Typography variant="body1">
+								<FormattedMessage id={it.name} />
+							</Typography>
 						</Link>
 					</Box>
 				))}

@@ -110,7 +110,7 @@ const MobileNavigationListItem: FC<MobileNavigationListItemProps> = ({
 							<ListItemText
 								primary={
 									<Typography variant="h6">
-										<FormattedMessage id={menuItem.name} />
+										<FormattedMessage id={it.name} />
 									</Typography>
 								}
 							/>

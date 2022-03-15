@@ -1,5 +1,5 @@
 import { PaletteOptions } from "@mui/material";
-import { brown, green } from "@mui/material/colors";
+import { brown, green, grey } from "@mui/material/colors";
 
 const palette: PaletteOptions = {
 	secondary: {
@@ -16,6 +16,12 @@ const palette: PaletteOptions = {
 	},
 	brown,
 	green,
+	heroPrimary: {
+		light: "#fff",
+		main: grey[50],
+		dark: grey[200],
+		contrastText: "#000000",
+	},
 };
 
 export default palette;

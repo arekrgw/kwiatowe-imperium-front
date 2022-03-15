@@ -1,5 +1,8 @@
 {
 	"menu.home": "Strona główna",
 	"menu.flowers": "Rośliny",
-	"menu.account": "Konto"
+	"menu.account": "Konto",
+	"menu.categories": "Kategorie",
+
+	"offersForYou": "Propozycje dla Ciebie"
 }

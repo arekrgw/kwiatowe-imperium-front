@@ -13,7 +13,7 @@ const ExtendedMenu = ({ items }: ExtendedMenuProps) => {
 	return (
 		<ExtendedMenuContent>
 			<Typography fontWeight="fontWeightMedium" variant="h6" mb="20px">
-				Kategorie
+				<FormattedMessage id="menu.categories" />
 			</Typography>
 			<Stack flexDirection="column" flexWrap="wrap" height="150px">
 				{items.map((it) => (

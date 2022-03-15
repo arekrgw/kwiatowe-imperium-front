@@ -1,5 +1,8 @@
 {
 	"menu.home": "Home",
 	"menu.flowers": "Flowers",
-	"menu.account": "Account"
+	"menu.account": "Account",
+	"menu.categories": "Categories",
+
+	"offersForYou": "Offers for You"
 }

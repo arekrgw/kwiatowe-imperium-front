@@ -51,7 +51,15 @@ const DesktopMenuItem = ({ menuItem }: DesktopMenuItemProps) => {
 			</Button>
 			<HoverPopover
 				{...bindPopover(popupState)}
-				PaperProps={{ sx: { mt: "5px" } }}
+				// open
+				PaperProps={{
+					sx: {
+						pt: "5px",
+						background: "transparent",
+						boxShadow: "none",
+						overflow: "unset",
+					},
+				}}
 				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
 				transformOrigin={{ vertical: "top", horizontal: "center" }}
 				disableScrollLock

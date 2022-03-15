@@ -20,11 +20,17 @@ declare module "@mui/material/styles" {
 	interface Palette {
 		green: Color;
 		brown: Color;
+		heroPrimary: Palette["primary"];
 	}
-
-	// allow configuration using `createTheme`
 	interface PaletteOptions {
-		green?: Color;
-		brown?: Color;
+		green: Color;
+		brown: Color;
+		heroPrimary: PaletteOptions["primary"];
+	}
+}
+
+declare module "@mui/material/Button" {
+	interface ButtonPropsColorOverrides {
+		heroPrimary: true;
 	}
 }

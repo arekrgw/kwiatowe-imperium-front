@@ -6,4 +6,5 @@ export const ExtendedMenuContent = styled(Box)`
 	border-radius: 5px;
 	color: #000;
 	min-width: 400px;
+	box-shadow: ${({ theme }) => theme.shadows[3]};
 `;

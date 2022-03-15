@@ -11,9 +11,11 @@ export class MainStore {
 
 	hideMenu = () => {
 		this.isMenuOpen = false;
+		document.querySelector("body")!.style.overflow = "auto";
 	};
 
 	openMenu = () => {
 		this.isMenuOpen = true;
+		document.querySelector("body")!.style.overflow = "hidden";
 	};
 }

@@ -2,6 +2,7 @@ import { getQueryClient } from "@app/api";
 import { homePageQuery } from "@app/queries";
 import ButtonLink from "@components/ButtonLink";
 import { HeroSection } from "@components/HeroSection";
+import ProductsList from "@components/ProductsList/ProductsList";
 import { Box, Button, Typography } from "@mui/material";
 import { useStore } from "@stores";
 import { observer } from "mobx-react-lite";
@@ -26,7 +27,7 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 const Home = (
 	props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
-	const { data } = useQuery(...homePageQuery());
+	const { data, isLoading } = useQuery(...homePageQuery());
 
 	return (
 		<Box>
@@ -46,6 +47,16 @@ const Home = (
 				<Typography variant="h4" component="h1">
 					<FormattedMessage id="offersForYou" />
 				</Typography>
+				<Box
+					sx={(theme) => ({
+						mt: "20px",
+						[theme.breakpoints.up("md")]: {
+							mt: "40px",
+						},
+					})}
+				>
+					<ProductsList products={data} isLoading={isLoading} />
+				</Box>
 			</Box>
 		</Box>
 	);

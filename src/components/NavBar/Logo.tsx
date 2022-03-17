@@ -1,12 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import routes from "@app/routes";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
+import Image from "@components/Image";
 import Link from "next/link";
 
 interface LogoProps {}
-
-const Image = styled("img")``;
 
 const Logo = (props: LogoProps) => {
 	return (

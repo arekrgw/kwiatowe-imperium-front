@@ -15,7 +15,7 @@ const ProductList = ({ products, isLoading }: ProductListProps) => {
 				{Array(12)
 					.fill(1)
 					.map((_, i) => (
-						<Grid item xs={6} key={i} sm={4} md={3}>
+						<Grid item xs={12} key={i} sm={4} md={3}>
 							<ProductSkeleton />
 						</Grid>
 					))}
@@ -26,7 +26,7 @@ const ProductList = ({ products, isLoading }: ProductListProps) => {
 	return (
 		<Grid container spacing="15px">
 			{products.map((product) => (
-				<Grid item xs={6} key={product.id} sm={4} md={3}>
+				<Grid item xs={12} key={product.id} sm={6} md={4} lg={3}>
 					<Product product={product} />
 				</Grid>
 			))}

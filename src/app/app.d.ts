@@ -13,8 +13,9 @@ declare global {
 		APP_STATE: RootStore;
 	}
 
-	type QueryDescriptor<T> = (
-		APIInstance?: AxiosInstance
+	type QueryDescriptor<T, K = unknown> = (
+		APIInstance?: AxiosInstance,
+		params?: K
 	) => [QueryKey, QueryFunction<T>];
 
 	interface Image {

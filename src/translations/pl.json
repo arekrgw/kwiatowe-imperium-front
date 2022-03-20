@@ -6,5 +6,12 @@
 
 	"offersForYou": "Propozycje dla Ciebie",
 
-	"price": "Cena"
+	"price": "Cena",
+
+	"footer.about": "O nas",
+	"footer.delivery": "Dostawa",
+	"footer.terms": "Warunki",
+	"footer.returns": "Zwroty",
+	"footer.private_policy": "Polityka prywatności",
+	"footer.contact": "Kontakt"
 }

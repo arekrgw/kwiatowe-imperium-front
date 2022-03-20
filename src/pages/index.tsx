@@ -1,7 +1,9 @@
 import { getQueryClient } from "@app/api";
 import { homePageQuery } from "@app/queries";
 import ButtonLink from "@components/ButtonLink";
+import { Footer } from "@components/Footer";
 import { HeroSection } from "@components/HeroSection";
+import PageCenterWrapper from "@components/PageCenterWrapper";
 import ProductsList from "@components/ProductsList/ProductsList";
 import { Box, Button, Typography } from "@mui/material";
 import { useStore } from "@stores";
@@ -30,20 +32,9 @@ const Home = (
 	const { data, isLoading } = useQuery(...homePageQuery());
 
 	return (
-		<Box>
+		<Box flex="1">
 			<HeroSection />
-			<Box
-				p="20px"
-				sx={(theme) => ({
-					p: "20px",
-					[theme.breakpoints.up("md")]: {
-						p: "40px 20px",
-						width: "100%",
-						maxWidth: "1200px",
-						margin: "0 auto",
-					},
-				})}
-			>
+			<PageCenterWrapper>
 				<Typography variant="h4" component="h1">
 					<FormattedMessage id="offersForYou" />
 				</Typography>
@@ -57,7 +48,7 @@ const Home = (
 				>
 					<ProductsList products={data} isLoading={isLoading} />
 				</Box>
-			</Box>
+			</PageCenterWrapper>
 		</Box>
 	);
 };

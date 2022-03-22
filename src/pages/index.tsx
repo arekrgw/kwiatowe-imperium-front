@@ -1,4 +1,4 @@
-import { getQueryClient } from "@app/api";
+import { API, getQueryClient } from "@app/api";
 import { homePageQuery } from "@app/queries";
 import ButtonLink from "@components/ButtonLink";
 import { Footer } from "@components/Footer";
@@ -18,8 +18,9 @@ interface HomeProps extends IDehydratedState {}
 export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 	ctx
 ) => {
+	API.setAcceptLanguageHeader(ctx.locale!);
 	const queryClient = getQueryClient();
-	await queryClient.prefetchQuery(...homePageQuery());
+	await queryClient.prefetchQuery(...homePageQuery(API.getInstance()));
 
 	return {
 		props: { dehydratedState: dehydrate(queryClient) },
@@ -32,9 +33,9 @@ const Home = (
 	const { data, isLoading } = useQuery(...homePageQuery());
 
 	return (
-		<Box flex="1">
+		<>
 			<HeroSection />
-			<PageCenterWrapper>
+			<PageCenterWrapper sx={{ mb: "50px" }}>
 				<Typography variant="h4" component="h1">
 					<FormattedMessage id="offersForYou" />
 				</Typography>
@@ -49,7 +50,7 @@ const Home = (
 					<ProductsList products={data} isLoading={isLoading} />
 				</Box>
 			</PageCenterWrapper>
-		</Box>
+		</>
 	);
 };
 

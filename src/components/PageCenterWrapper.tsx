@@ -3,12 +3,15 @@ import { styled } from "@mui/material/styles";
 
 const PageCenterWrapper = styled(Box)`
 	padding: 20px;
+	display: flex;
+	flex-direction: column;
 
 	${({ theme }) => theme.breakpoints.up("md")} {
 		padding: 40px;
 		width: 100%;
 		max-width: 1200px;
-		margin: 0 auto;
+		margin-left: auto;
+		margin-right: auto;
 	}
 `;
 

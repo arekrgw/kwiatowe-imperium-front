@@ -1,7 +1,6 @@
 import { Typography } from "@mui/material";
 import Link, { LinkProps } from "next/link";
 import { FC } from "react";
-import { FormattedMessage } from "react-intl";
 
 interface FooterLinkProps extends Pick<LinkProps, "href"> {}
 
@@ -11,9 +10,8 @@ const FooterLink: FC<FooterLinkProps> = ({ href, children }) => {
 			<Typography
 				component="a"
 				sx={{
-					color: "inherit",
+					color: "brown.200",
 					textDecoration: "none",
-					"&:visited": { color: "inherit" },
 				}}
 			>
 				{children}

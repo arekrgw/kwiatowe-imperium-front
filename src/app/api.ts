@@ -27,4 +27,10 @@ export class API {
 
 		return this.instance.axiosInstance;
 	}
+
+	public static setAcceptLanguageHeader(lang: string) {
+		const instance = this.getInstance();
+
+		instance.defaults.headers.common["Accept-Language"] = lang;
+	}
 }

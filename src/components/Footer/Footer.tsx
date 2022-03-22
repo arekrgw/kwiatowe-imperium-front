@@ -13,7 +13,6 @@ const Footer = (props: FooterProps) => {
 				backgroundColor: "brown.900",
 				p: "50px 20px",
 				color: "#fff",
-				mt: "50px",
 			})}
 		>
 			<Image

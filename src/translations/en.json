@@ -13,5 +13,7 @@
 	"footer.terms": "Terms & Conditions",
 	"footer.returns": "Returns",
 	"footer.private_policy": "Private policy",
-	"footer.contact": "Contact"
+	"footer.contact": "Contact",
+
+	"notFound": "Sorry, we didn't find any page for your request :("
 }

@@ -1,4 +1,4 @@
-import { getQueryClient } from "@app/api";
+import { API, getQueryClient } from "@app/api";
 import createEmotionCache from "@app/createEmotionCache";
 import Layout from "@components/Layout";
 import { CacheProvider, EmotionCache } from "@emotion/react";
@@ -12,7 +12,7 @@ import type { NextComponentType } from "next";
 import type { AppContext, AppInitialProps, AppLayoutProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { IntlProvider } from "react-intl";
 import { Hydrate, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -45,6 +45,10 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = (
 	const router = useRouter();
 
 	const [shortLocale] = router.locale ? router.locale.split("-") : ["en"];
+
+	useEffect(() => {
+		API.setAcceptLanguageHeader(shortLocale);
+	}, [shortLocale]);
 
 	const messages = useMemo(() => {
 		if (shortLocale === "pl") return pl;

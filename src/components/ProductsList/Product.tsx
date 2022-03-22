@@ -76,7 +76,7 @@ const Product = ({ product }: ProductProps) => {
 							fontWeight="fontWeightMedium"
 							color="secondary.main"
 						>
-							{price.toFixed(2)}
+							{price.toFixed(2)} PLN
 						</Typography>
 					</Box>
 				</Box>

@@ -9,7 +9,9 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 	return (
 		<Box minHeight="100vh" display="flex" flexDirection="column">
 			<NavBar />
-			{children}
+			<Box flex="2" display="flex" flexDirection="column">
+				{children}
+			</Box>
 			<Footer />
 		</Box>
 	);

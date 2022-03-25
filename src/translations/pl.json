@@ -3,6 +3,7 @@
 	"menu.flowers": "Rośliny",
 	"menu.account": "Konto",
 	"menu.categories": "Kategorie",
+	"menu.fulloffer": "Pełna oferta",
 
 	"offersForYou": "Propozycje dla Ciebie",
 
@@ -15,5 +16,21 @@
 	"footer.private_policy": "Polityka prywatności",
 	"footer.contact": "Kontakt",
 
-	"notFound": "Przepraszamy, nie znaleźliśmy dla ciebie żądanej strony :("
+	"notFound": "Przepraszamy, nie znaleźliśmy dla ciebie żądanej strony :(",
+
+	"signin.joinorlogin": "Dołącz do naszego imperium albo zaloguj się",
+
+	"signin.login": "Zaloguj się",
+	"signin.register": "Zarejestruj się",
+	"signin.firstName": "Imię",
+	"signin.lastName": "Nazwisko",
+	"signin.email": "E-mail",
+	"signin.password": "Hasło",
+
+	"signin.btn-login": "Zaloguj się",
+	"signin.btn-register": "Zarejestruj się",
+
+	"validation.required": "To pole jest wymagane",
+	"validation.min3": "Minimalnie 3 znaki wymagane",
+	"validation.email": "Niepoprawny e-mail"
 }

@@ -1,15 +1,13 @@
 import { API, getQueryClient } from "@app/api";
 import { categoriesQuery, homePageQuery } from "@app/queries";
-import ButtonLink from "@components/ButtonLink";
-import { Footer } from "@components/Footer";
 import { HeroSection } from "@components/HeroSection";
 import PageCenterWrapper from "@components/PageCenterWrapper";
 import ProductsList from "@components/ProductsList/ProductsList";
-import { Box, Button, Typography } from "@mui/material";
-import { useStore } from "@stores";
+import { LoginForm, RegisterForm } from "@components/SignIn";
+import { Box, Grid, Typography } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Link from "next/link";
+import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
 import { dehydrate, useQuery } from "react-query";
 
@@ -21,7 +19,6 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 	API.setAcceptLanguageHeader(ctx.locale!);
 	const queryClient = getQueryClient();
 	await Promise.all([
-		queryClient.prefetchQuery(...homePageQuery(API.getInstance())),
 		queryClient.prefetchQuery(...categoriesQuery(API.getInstance())),
 	]);
 
@@ -30,31 +27,26 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 	};
 };
 
-const Home = (
+const SignIn = (
 	props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
-	const { data, isLoading } = useQuery(...homePageQuery());
-
 	return (
-		<>
-			<HeroSection />
-			<PageCenterWrapper sx={{ mb: "50px" }}>
-				<Typography variant="h4" component="h1">
-					<FormattedMessage id="offersForYou" />
-				</Typography>
-				<Box
-					sx={(theme) => ({
-						mt: "20px",
-						[theme.breakpoints.up("md")]: {
-							mt: "40px",
-						},
-					})}
-				>
-					<ProductsList products={data} isLoading={isLoading} />
-				</Box>
-			</PageCenterWrapper>
-		</>
+		<PageCenterWrapper sx={{ mb: "50px" }}>
+			<Typography component="h1" sx={(theme) => ({ ...theme.typography.h4 })}>
+				<FormattedMessage id="signin.joinorlogin" />
+			</Typography>
+			<Box mt="30px">
+				<Grid container spacing="40px">
+					<Grid item xs={12} md={6}>
+						<LoginForm />
+					</Grid>
+					<Grid item xs={12} md={6}>
+						<RegisterForm />
+					</Grid>
+				</Grid>
+			</Box>
+		</PageCenterWrapper>
 	);
 };
 
-export default observer(Home);
+export default observer(SignIn);

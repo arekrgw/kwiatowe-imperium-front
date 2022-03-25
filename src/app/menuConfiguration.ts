@@ -9,6 +9,7 @@ export interface MenuItemSingle {
 	key: string;
 	name: string;
 	href: string;
+	isTranslatable: boolean;
 	Icon?: React.ComponentType<SvgIconProps>;
 }
 
@@ -26,55 +27,22 @@ const menuConfiguration: MenuItem[] = [
 		name: "menu.home",
 		href: "/",
 		key: "home",
+		isTranslatable: true,
 		Icon: HomeIcon,
 	},
 	{
 		__typename: "MenuItemExtended",
 		name: "menu.flowers",
 		key: "flowers",
+		isTranslatable: true,
 		Icon: LocalFloristIcon,
 		extended: [
 			{
 				__typename: "MenuItemSingle",
 				key: "fulloffer",
-				name: "Pełna oferta",
+				name: "menu.fulloffer",
+				isTranslatable: true,
 				href: "/flowers",
-			},
-			{
-				__typename: "MenuItemSingle",
-				key: "roses",
-				name: "Róże",
-				href: "/flowers?category=rose",
-			},
-			{
-				__typename: "MenuItemSingle",
-				key: "tulips",
-				name: "Tulipany",
-				href: "/flowers?category=tulip",
-			},
-			{
-				__typename: "MenuItemSingle",
-				key: "cloves",
-				name: "Goździki",
-				href: "/flowers?category=cloves",
-			},
-			{
-				__typename: "MenuItemSingle",
-				key: "gerbers",
-				name: "Gerbery",
-				href: "/flowers?category=gerbers",
-			},
-			{
-				__typename: "MenuItemSingle",
-				key: "pots",
-				name: "Rośliny doniczkowe",
-				href: "/flowers?category=pots",
-			},
-			{
-				__typename: "MenuItemSingle",
-				key: "garden",
-				name: "Rośliny ogrodowe",
-				href: "/flowers?category=garden",
 			},
 		],
 	},
@@ -82,7 +50,8 @@ const menuConfiguration: MenuItem[] = [
 		__typename: "MenuItemSingle",
 		key: "acc",
 		name: "menu.account",
-		href: "/account",
+		isTranslatable: true,
+		href: "/profile",
 		Icon: PersonIcon,
 	},
 ];

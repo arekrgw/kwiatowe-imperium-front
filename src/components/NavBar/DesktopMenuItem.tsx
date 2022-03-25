@@ -9,7 +9,7 @@ import {
 } from "material-ui-popup-state/hooks";
 import HoverPopover from "material-ui-popup-state/HoverPopover";
 import { FormattedMessage } from "react-intl";
-import ExtendedMenu from "./ExtendedMenu";
+import ExtendedMenuCategories from "./ExtendedMenuCategories";
 
 interface DesktopMenuItemProps {
 	menuItem: MenuItem;
@@ -51,7 +51,6 @@ const DesktopMenuItem = ({ menuItem }: DesktopMenuItemProps) => {
 			</Button>
 			<HoverPopover
 				{...bindPopover(popupState)}
-				// open
 				PaperProps={{
 					sx: {
 						pt: "5px",
@@ -64,7 +63,9 @@ const DesktopMenuItem = ({ menuItem }: DesktopMenuItemProps) => {
 				transformOrigin={{ vertical: "top", horizontal: "center" }}
 				disableScrollLock
 			>
-				<ExtendedMenu items={menuItem.extended} />
+				{menuItem.name === "menu.flowers" && (
+					<ExtendedMenuCategories item={menuItem} />
+				)}
 			</HoverPopover>
 		</>
 	);

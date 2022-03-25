@@ -30,4 +30,10 @@ declare global {
 		price: number;
 		images: Image[];
 	}
+
+	interface Category {
+		id: string;
+		name: string;
+		is_visible: string;
+	}
 }

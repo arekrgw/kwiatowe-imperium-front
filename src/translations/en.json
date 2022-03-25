@@ -3,6 +3,7 @@
 	"menu.flowers": "Flowers",
 	"menu.account": "Profile",
 	"menu.categories": "Categories",
+	"menu.fulloffer": "Full offer",
 
 	"offersForYou": "Offers for You",
 
@@ -15,5 +16,21 @@
 	"footer.private_policy": "Private policy",
 	"footer.contact": "Contact",
 
-	"notFound": "Sorry, we didn't find any page for your request :("
+	"notFound": "Sorry, we didn't find any page for your request :(",
+
+	"signin.joinorlogin": "Join to our empire or just log in to your account ",
+
+	"signin.login": "Login",
+	"signin.register": "Register",
+	"signin.firstName": "First name",
+	"signin.lastName": "Last name",
+	"signin.email": "E-mail",
+	"signin.password": "Password",
+
+	"signin.btn-login": "Login",
+	"signin.btn-register": "Register",
+
+	"validation.required": "This field is required",
+	"validation.min3": "Minimum of 3 characters are required",
+	"validation.email": "Not a valid e-mail"
 }

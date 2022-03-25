@@ -12,17 +12,21 @@ import {
 	Theme,
 	Typography,
 } from "@mui/material";
+import { SystemStyleObject } from "@mui/system";
 import { observer } from "mobx-react-lite";
 import { useStore } from "@stores";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import { FormattedMessage } from "react-intl";
+import ExtendedMenuCategories from "./ExtendedMenuCategories";
 
 interface MobileNavigationListItemProps {
 	menuItem: MenuItem;
 }
 
-const sharedSx: SxProps<Theme> = (theme) => ({
+type SharedSx = (theme: Theme) => SystemStyleObject<Theme>;
+
+export const sharedSx: SharedSx = (theme) => ({
 	backgroundColor: "green.700",
 	"&:hover": {
 		backgroundColor: alpha(theme.palette.green[700], 0.7),
@@ -86,37 +90,9 @@ const MobileNavigationListItem: FC<MobileNavigationListItemProps> = ({
 				{Icon && <Icon />}
 			</ListItemButton>
 			<Collapse in={open} timeout={300}>
-				<List sx={{ padding: "10px 0 20px 0" }}>
-					{menuItem.extended.map((it) => (
-						<ListItemButtonLink
-							sx={(theme) => ({
-								...sharedSx(theme),
-								backgroundColor: "brown.700",
-								"&:hover": {
-									backgroundColor: theme.palette.brown[500],
-								},
-							})}
-							key={it.key}
-							href={it.href}
-							onClick={mainStore.hideMenu}
-						>
-							{it.Icon && (
-								<ListItemIcon
-									sx={{ color: "secondary.contrastText", minWidth: "40px" }}
-								>
-									<it.Icon />
-								</ListItemIcon>
-							)}
-							<ListItemText
-								primary={
-									<Typography variant="h6">
-										<FormattedMessage id={it.name} />
-									</Typography>
-								}
-							/>
-						</ListItemButtonLink>
-					))}
-				</List>
+				{menuItem.name === "menu.flowers" && (
+					<ExtendedMenuCategories isMobile item={menuItem} />
+				)}
 			</Collapse>
 		</>
 	);

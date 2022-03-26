@@ -1,4 +1,4 @@
-import { API, getQueryClient } from "@app/api";
+import { prepareApi } from "@app/api";
 import { productPageQuery } from "@app/queries";
 import PageCenterWrapper from "@components/PageCenterWrapper";
 import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
@@ -22,11 +22,10 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (!id) return { notFound: true };
 
-	API.setAcceptLanguageHeader(ctx.locale!);
-	const queryClient = getQueryClient();
-	await queryClient.prefetchQuery(
-		...productPageQuery(API.getInstance(), { id })
-	);
+	const [queryClient, promises] = prepareApi(ctx);
+	promises.push(queryClient.prefetchQuery(...productPageQuery({ id })));
+
+	await Promise.all(promises);
 
 	return {
 		props: { dehydratedState: dehydrate(queryClient) },
@@ -36,7 +35,7 @@ export const getServerSideProps: GetServerSideProps<
 const ProductPage: NextPage<ProductPageProps> = (props) => {
 	const { query } = useRouter();
 	const { data: product, isLoading } = useQuery(
-		...productPageQuery(undefined, { id: query.id as string })
+		...productPageQuery({ id: query.id as string })
 	);
 
 	if (!product || isLoading) return null;

@@ -14,7 +14,6 @@ declare global {
 	}
 
 	type QueryDescriptor<T, K = unknown> = (
-		APIInstance?: AxiosInstance,
 		params?: K
 	) => [QueryKey, QueryFunction<T>];
 
@@ -34,6 +33,10 @@ declare global {
 	interface Category {
 		id: string;
 		name: string;
-		is_visible: string;
+		_visible: boolean;
+	}
+
+	interface CategoryWithProcutsList extends Category {
+		products: Product[];
 	}
 }

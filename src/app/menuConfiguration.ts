@@ -42,7 +42,7 @@ const menuConfiguration: MenuItem[] = [
 				key: "fulloffer",
 				name: "menu.fulloffer",
 				isTranslatable: true,
-				href: "/flowers",
+				href: "/category",
 			},
 		],
 	},

@@ -5,7 +5,7 @@ export const createCategoriesObject = (
 ): MenuItemSingle[] => {
 	return categories.map((cat) => ({
 		__typename: "MenuItemSingle",
-		href: `/flowers/${cat.id}`,
+		href: `/category/${cat.id}`,
 		key: cat.name,
 		isTranslatable: false,
 		name: cat.name,

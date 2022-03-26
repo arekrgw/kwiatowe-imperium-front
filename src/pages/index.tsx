@@ -1,15 +1,11 @@
-import { API, getQueryClient } from "@app/api";
+import { API, getQueryClient, prepareApi } from "@app/api";
 import { categoriesQuery, homePageQuery } from "@app/queries";
-import ButtonLink from "@components/ButtonLink";
-import { Footer } from "@components/Footer";
 import { HeroSection } from "@components/HeroSection";
 import PageCenterWrapper from "@components/PageCenterWrapper";
 import ProductsList from "@components/ProductsList/ProductsList";
-import { Box, Button, Typography } from "@mui/material";
-import { useStore } from "@stores";
+import { Box, Typography } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Link from "next/link";
 import { FormattedMessage } from "react-intl";
 import { dehydrate, useQuery } from "react-query";
 
@@ -18,12 +14,10 @@ interface HomeProps extends IDehydratedState {}
 export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 	ctx
 ) => {
-	API.setAcceptLanguageHeader(ctx.locale!);
-	const queryClient = getQueryClient();
-	await Promise.all([
-		queryClient.prefetchQuery(...homePageQuery(API.getInstance())),
-		queryClient.prefetchQuery(...categoriesQuery(API.getInstance())),
-	]);
+	const [queryClient, promises] = prepareApi(ctx);
+	promises.push(queryClient.prefetchQuery(...homePageQuery()));
+
+	await Promise.all(promises);
 
 	return {
 		props: { dehydratedState: dehydrate(queryClient) },

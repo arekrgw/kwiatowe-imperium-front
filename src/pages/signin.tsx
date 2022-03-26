@@ -1,26 +1,20 @@
-import { API, getQueryClient } from "@app/api";
-import { categoriesQuery, homePageQuery } from "@app/queries";
-import { HeroSection } from "@components/HeroSection";
+import { prepareApi } from "@app/api";
 import PageCenterWrapper from "@components/PageCenterWrapper";
-import ProductsList from "@components/ProductsList/ProductsList";
 import { LoginForm, RegisterForm } from "@components/SignIn";
 import { Box, Grid, Typography } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
-import { dehydrate, useQuery } from "react-query";
+import { dehydrate } from "react-query";
 
 interface HomeProps extends IDehydratedState {}
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 	ctx
 ) => {
-	API.setAcceptLanguageHeader(ctx.locale!);
-	const queryClient = getQueryClient();
-	await Promise.all([
-		queryClient.prefetchQuery(...categoriesQuery(API.getInstance())),
-	]);
+	const [queryClient, promises] = prepareApi(ctx);
+
+	await Promise.all(promises);
 
 	return {
 		props: { dehydratedState: dehydrate(queryClient) },

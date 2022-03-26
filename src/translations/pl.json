@@ -32,5 +32,8 @@
 
 	"validation.required": "To pole jest wymagane",
 	"validation.min3": "Minimalnie 3 znaki wymagane",
-	"validation.email": "Niepoprawny e-mail"
+	"validation.email": "Niepoprawny e-mail",
+
+	"categoryListing": "Wyniki dla kategorii: {categoryName}",
+	"categoryListingAll": "Wszystkie dostępne kwiaty"
 }

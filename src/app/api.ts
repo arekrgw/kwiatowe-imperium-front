@@ -1,5 +1,7 @@
 import { DefaultOptions, QueryClient } from "react-query";
 import axios, { AxiosInstance } from "axios";
+import { GetServerSidePropsContext } from "next";
+import { categoriesQuery } from "./queries";
 
 export const getQueryClient = (defaultOptions?: DefaultOptions) => {
 	return new QueryClient({
@@ -34,3 +36,12 @@ export class API {
 		instance.defaults.headers.common["Accept-Language"] = lang;
 	}
 }
+
+export const prepareApi = (ctx: GetServerSidePropsContext) => {
+	API.setAcceptLanguageHeader(ctx.locale!);
+	const client = getQueryClient();
+
+	const promises = [client.prefetchQuery(...categoriesQuery())];
+
+	return [client, promises] as const;
+};

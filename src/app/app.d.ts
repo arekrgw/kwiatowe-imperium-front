@@ -36,7 +36,7 @@ declare global {
 		_visible: boolean;
 	}
 
-	interface CategoryWithProcutsList extends Category {
+	interface CategoryWithProductsList extends Category {
 		products: Product[];
 	}
 }

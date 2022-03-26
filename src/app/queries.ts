@@ -5,7 +5,7 @@ import { createCategoriesObject } from "./utils/dataUtils";
 export const homePageQuery: QueryDescriptor<Product[]> = () => [
 	"homepageList",
 	async () => {
-		const res = await API.getInstance().get<CategoryWithProcutsList>(
+		const res = await API.getInstance().get<CategoryWithProductsList>(
 			"/category/name/homepage"
 		);
 		return res.data.products;
@@ -40,12 +40,12 @@ export const categoriesQuery: QueryDescriptor<MenuItemSingle[]> = () => [
 ];
 
 export const categoryListingQuery: QueryDescriptor<
-	CategoryWithProcutsList,
+	CategoryWithProductsList,
 	{ id: string }
 > = (params) => [
 	["category", params?.id],
 	async ({ queryKey }) => {
-		const res = await API.getInstance().get<CategoryWithProcutsList>(
+		const res = await API.getInstance().get<CategoryWithProductsList>(
 			`/category/${queryKey[1]}`
 		);
 		return res.data;

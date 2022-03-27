@@ -35,5 +35,11 @@
 	"validation.email": "Not a valid e-mail",
 
 	"categoryListing": "Results for category: {categoryName}",
-	"categoryListingAll": "All available flowers"
+	"categoryListingAll": "All available flowers",
+
+	"profile.title": "Your profile details, {firstName}",
+	"profile.tab.details": "Details",
+	"profile.tab.orders": "Orders",
+	"profile.tab.addresses": "Addresses",
+	"profile.tab.calendar": "Calendar"
 }

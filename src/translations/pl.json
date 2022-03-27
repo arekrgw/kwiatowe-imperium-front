@@ -35,5 +35,11 @@
 	"validation.email": "Niepoprawny e-mail",
 
 	"categoryListing": "Wyniki dla kategorii: {categoryName}",
-	"categoryListingAll": "Wszystkie dostępne kwiaty"
+	"categoryListingAll": "Wszystkie dostępne kwiaty",
+
+	"profile.title": "Szczegóły twojego profilu, {firstName}",
+	"profile.tab.details": "Szczegóły",
+	"profile.tab.orders": "Zamówienia",
+	"profile.tab.addresses": "Adresy",
+	"profile.tab.calendar": "Kalendarz"
 }

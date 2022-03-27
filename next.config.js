@@ -4,6 +4,7 @@ const nextConfig = {
 	i18n: {
 		locales: ["pl", "en"],
 		defaultLocale: "pl",
+		localeDetection: true,
 	},
 	images: {
 		domains: ["localhost"],

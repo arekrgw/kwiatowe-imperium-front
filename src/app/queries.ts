@@ -1,6 +1,6 @@
-import { API } from "./api";
-import { MenuItemSingle } from "./menuConfiguration";
-import { createCategoriesObject } from "./utils/dataUtils";
+import { API } from "@app/api";
+import { MenuItemSingle } from "@app/menuConfiguration";
+import { createCategoriesObject } from "@app/utils/dataUtils";
 
 export const homePageQuery: QueryDescriptor<Product[]> = () => [
 	"homepageList",

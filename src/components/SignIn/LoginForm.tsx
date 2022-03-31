@@ -1,13 +1,18 @@
+import { API } from "@app/api";
+import apiRoutes from "@app/apiRoutes";
+import { setJwt } from "@app/auth";
 import PasswordField from "@components/PasswordField";
-import { Box, Button, Stack, TextField } from "@mui/material";
+import { Box, Button, FormHelperText, Stack, TextField } from "@mui/material";
+import { useRouter } from "next/router";
 import { Controller, useForm } from "react-hook-form";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { string } from "yup";
 import Wrapper from "./Wrapper";
 
 export interface LoginData {
 	email: string;
 	password: string;
+	submitError: string;
 }
 
 interface LoginFormProps {}
@@ -17,12 +22,32 @@ const LoginForm = (props: LoginFormProps) => {
 		handleSubmit,
 		control,
 		formState: { errors },
+		setError,
+		clearErrors,
 	} = useForm<LoginData>({
 		defaultValues: { email: "", password: "" },
 	});
 
-	const onLogin = (data: LoginData) => {
-		console.log(data);
+	const intl = useIntl();
+	const router = useRouter();
+
+	const onLogin = async (formValues: LoginData) => {
+		try {
+			const { data } = await API.getInstance().post<LoginResponse>(
+				apiRoutes.login,
+				{
+					username: formValues.email,
+					password: formValues.password,
+				}
+			);
+
+			setJwt(data.jwt);
+			router.replace("/profile");
+		} catch (err) {
+			setError("submitError", {
+				message: intl.formatMessage({ id: "validation.notValidCredentials" }),
+			});
+		}
 	};
 
 	return (
@@ -71,7 +96,19 @@ const LoginForm = (props: LoginFormProps) => {
 						)}
 					/>
 				</Stack>
-				<Button type="submit" variant="contained" fullWidth sx={{ mt: "20px" }}>
+
+				{errors.submitError && (
+					<FormHelperText error sx={{ mt: "20px" }}>
+						{errors.submitError?.message}
+					</FormHelperText>
+				)}
+				<Button
+					type="submit"
+					variant="contained"
+					fullWidth
+					sx={{ mt: "20px" }}
+					onClick={() => clearErrors("submitError")}
+				>
 					<FormattedMessage id="signin.btn-login" />
 				</Button>
 			</form>

@@ -33,6 +33,7 @@
 	"validation.required": "This field is required",
 	"validation.min3": "Minimum of 3 characters are required",
 	"validation.email": "Not a valid e-mail",
+	"validation.notValidCredentials": "Email or password is invalid",
 
 	"categoryListing": "Results for category: {categoryName}",
 	"categoryListingAll": "All available flowers",

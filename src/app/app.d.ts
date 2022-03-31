@@ -36,6 +36,17 @@ declare global {
 		_visible: boolean;
 	}
 
+	interface LoginResponse {
+		jwt: string;
+	}
+
+	interface User {
+		username: string;
+		email: string;
+		name: string;
+		surname: string;
+	}
+
 	interface CategoryWithProductsList extends Category {
 		products: Product[];
 	}

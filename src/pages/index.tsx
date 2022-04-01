@@ -1,5 +1,5 @@
 import { API, getQueryClient, prepareApi } from "@app/api";
-import { categoriesQuery, homePageQuery } from "@app/queries";
+import { categoriesQuery, heroSectionQuery, homePageQuery } from "@app/queries";
 import { HeroSection } from "@components/HeroSection";
 import PageCenterWrapper from "@components/PageCenterWrapper";
 import ProductsList from "@components/ProductsList/ProductsList";
@@ -14,11 +14,11 @@ interface HomeProps extends IDehydratedState {}
 export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 	ctx
 ) => {
-	const [queryClient, promises] = prepareApi(ctx);
+	const [queryClient, promises, , awaitAll] = prepareApi(ctx);
 	promises.push(queryClient.prefetchQuery(...homePageQuery()));
+	promises.push(queryClient.prefetchQuery(...heroSectionQuery()));
 
-	await Promise.all(promises);
-
+	await awaitAll();
 	return {
 		props: { dehydratedState: dehydrate(queryClient) },
 	};

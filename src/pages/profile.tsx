@@ -20,11 +20,10 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 		};
 	}
 
-	const [queryClient, , user, awaitAll] = prepareApi(ctx);
+	const [queryClient, , userPromise, awaitAll] = prepareApi(ctx);
 
-	try {
-		await user;
-	} catch (err) {
+	const user = await userPromise;
+	if (!user) {
 		return {
 			redirect: {
 				destination: `${getPathLocale(ctx)}/signin`,

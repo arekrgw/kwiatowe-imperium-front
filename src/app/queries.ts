@@ -1,6 +1,7 @@
 import { API } from "@app/api";
 import { MenuItemSingle } from "@app/menuConfiguration";
 import { createCategoriesObject } from "@app/utils/dataUtils";
+import axios from "axios";
 import apiRoutes from "./apiRoutes";
 
 export const homePageQuery: QueryDescriptor<Product[]> = () => [
@@ -55,10 +56,34 @@ export const categoryListingQuery: QueryDescriptor<
 	},
 ];
 
-export const userProfile: QueryDescriptor<User> = () => [
+export const userProfile: QueryDescriptor<User | null> = () => [
 	"userProfile",
 	async () => {
-		const res = await API.getInstance().get<User>(apiRoutes.userProfile);
-		return res.data;
+		try {
+			const res = await API.getInstance().get<User>(apiRoutes.userProfile);
+
+			return res.data;
+		} catch (err) {
+			if (axios.isAxiosError(err)) {
+				if (Number(err.response?.status) === 400) {
+					return null;
+				}
+			}
+			throw err;
+		}
+	},
+];
+
+export const heroSectionQuery: QueryDescriptor<Hero> = () => [
+	"heroSection",
+	async () => {
+		return {
+			id: "1",
+			buttonText: "Zobacz więcej!",
+			title: "Wiosna nadchodzi!",
+			subtitle: "Zadbaj o swoje otoczenie i spraw sobie nowe rośliny!",
+			image: "/springback.jpeg",
+			categoryId: "7",
+		};
 	},
 ];

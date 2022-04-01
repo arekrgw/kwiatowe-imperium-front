@@ -2,6 +2,7 @@
 	"menu.home": "Strona główna",
 	"menu.flowers": "Rośliny",
 	"menu.account": "Konto",
+	"menu.signin": "Zaloguj się",
 	"menu.categories": "Kategorie",
 	"menu.fulloffer": "Pełna oferta",
 
@@ -33,6 +34,7 @@
 	"validation.required": "To pole jest wymagane",
 	"validation.min3": "Minimalnie 3 znaki wymagane",
 	"validation.email": "Niepoprawny e-mail",
+	"validation.notValidCredentials": "Email lub hasło jest nieprawidłowe",
 
 	"categoryListing": "Wyniki dla kategorii: {categoryName}",
 	"categoryListingAll": "Wszystkie dostępne kwiaty",

@@ -1,6 +1,5 @@
 import LocalFloristIcon from "@mui/icons-material/LocalFlorist";
 import HomeIcon from "@mui/icons-material/Home";
-import PersonIcon from "@mui/icons-material/Person";
 import { SvgIconProps } from "@mui/material";
 import React from "react";
 
@@ -45,14 +44,6 @@ const menuConfiguration: MenuItem[] = [
 				href: "/category",
 			},
 		],
-	},
-	{
-		__typename: "MenuItemSingle",
-		key: "acc",
-		name: "menu.account",
-		isTranslatable: true,
-		href: "/profile",
-		Icon: PersonIcon,
 	},
 ];
 

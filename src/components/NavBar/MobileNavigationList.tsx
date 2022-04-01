@@ -3,6 +3,7 @@ import { List } from "@mui/material";
 import Box from "@mui/material/Box";
 import { observer } from "mobx-react-lite";
 import MobileNavigationListItem from "./MobileNavigationListItem";
+import ProfileButton from "./ProfileButton";
 
 interface MobileNavigationListProps {}
 
@@ -13,6 +14,7 @@ const MobileNavigationList = (props: MobileNavigationListProps) => {
 				{menuConfiguration.map((menuItem) => (
 					<MobileNavigationListItem key={menuItem.key} menuItem={menuItem} />
 				))}
+				<ProfileButton />
 			</List>
 		</Box>
 	);

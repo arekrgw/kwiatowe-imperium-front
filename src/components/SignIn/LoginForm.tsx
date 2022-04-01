@@ -2,11 +2,10 @@ import { API } from "@app/api";
 import apiRoutes from "@app/apiRoutes";
 import { setJwt } from "@app/auth";
 import PasswordField from "@components/PasswordField";
-import { Box, Button, FormHelperText, Stack, TextField } from "@mui/material";
+import { Button, FormHelperText, Stack, TextField } from "@mui/material";
 import { useRouter } from "next/router";
 import { Controller, useForm } from "react-hook-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { string } from "yup";
 import Wrapper from "./Wrapper";
 
 export interface LoginData {
@@ -27,7 +26,6 @@ const LoginForm = (props: LoginFormProps) => {
 	} = useForm<LoginData>({
 		defaultValues: { email: "", password: "" },
 	});
-
 	const intl = useIntl();
 	const router = useRouter();
 

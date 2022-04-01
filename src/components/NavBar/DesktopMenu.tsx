@@ -1,7 +1,7 @@
 import menuConfiguration from "@app/menuConfiguration";
-import ButtonLink from "@components/ButtonLink";
 import { Stack } from "@mui/material";
 import DesktopMenuItem from "./DesktopMenuItem";
+import ProfileButton from "./ProfileButton";
 
 interface DesktopMenuProps {}
 
@@ -18,6 +18,7 @@ const DesktopMenu = (props: DesktopMenuProps) => {
 			{menuConfiguration.map((item) => (
 				<DesktopMenuItem key={item.key} menuItem={item} />
 			))}
+			<ProfileButton />
 		</Stack>
 	);
 };

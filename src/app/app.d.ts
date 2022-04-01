@@ -47,6 +47,15 @@ declare global {
 		surname: string;
 	}
 
+	interface Hero {
+		id: string;
+		image: string;
+		title: string;
+		subtitle: string;
+		buttonText: string;
+		specialCategoryName: string;
+	}
+
 	interface CategoryWithProductsList extends Category {
 		products: Product[];
 	}

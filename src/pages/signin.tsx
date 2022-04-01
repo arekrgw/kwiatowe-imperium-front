@@ -12,9 +12,18 @@ interface HomeProps extends IDehydratedState {}
 export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 	ctx
 ) => {
-	const [queryClient, promises] = prepareApi(ctx);
+	const [queryClient, , userPromise, awaitAll] = prepareApi(ctx);
 
-	await Promise.all(promises);
+	const user = await userPromise;
+	if (user) {
+		return {
+			redirect: {
+				destination: "/profile",
+				permanent: false,
+			},
+		};
+	}
+	await awaitAll();
 
 	return {
 		props: { dehydratedState: dehydrate(queryClient) },

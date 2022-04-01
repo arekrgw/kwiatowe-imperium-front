@@ -9,10 +9,14 @@ const FooterLink: FC<FooterLinkProps> = ({ href, children }) => {
 		<Link href={href} passHref>
 			<Typography
 				component="a"
-				sx={{
+				sx={(theme) => ({
 					color: "brown.200",
+					"&:hover": {
+						color: "brown.100",
+					},
+					transition: theme.transitions.create("color"),
 					textDecoration: "none",
-				}}
+				})}
 			>
 				{children}
 			</Typography>

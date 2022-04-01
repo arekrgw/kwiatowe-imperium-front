@@ -1,22 +1,17 @@
-import {
-	Box,
-	Button,
-	Typography,
-	useMediaQuery,
-	useTheme,
-} from "@mui/material";
-
-interface HeroSectionProps {}
+import { heroSectionQuery } from "@app/queries";
+import ButtonLink from "@components/ButtonLink";
+import { Box, Theme, Typography, useMediaQuery } from "@mui/material";
+import Image from "next/image";
+import { useQuery } from "react-query";
 
 const HeroSection = () => {
-	const theme = useTheme();
-	const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
+	const { data } = useQuery(...heroSectionQuery());
+	const isDesktop = useMediaQuery<Theme>((theme) => theme.breakpoints.up("sm"));
 	return (
 		<Box
 			sx={(theme) => ({
 				width: "100%",
-				background: "url(/springback.jpeg)",
-				backgroundSize: "cover",
+				position: "relative",
 				p: "50px 50px",
 				color: "#ffffff",
 				[theme.breakpoints.up("sm")]: {
@@ -24,38 +19,49 @@ const HeroSection = () => {
 				},
 			})}
 		>
-			<Box
-				display="flex"
-				alignItems="center"
-				flexDirection="column"
-				sx={{
-					display: "flex",
-					alignItems: "center",
-					flexDirection: "column",
-					justifyContent: "center",
-					height: "100%",
-				}}
-			>
-				<Typography
-					fontWeight="fontWeightBold"
-					variant="h1"
-					textAlign="center"
-					mb="10px"
-				>
-					Wiosna nadchodzi!
-				</Typography>
-				<Typography fontWeight="fontWeightMedium" textAlign="center">
-					Zadbaj o swoje otoczenie i spraw sobie nowe rośliny!
-				</Typography>
-				<Button
-					variant="outlined"
-					color="heroPrimary"
-					size={isDesktop ? "large" : "medium"}
-					sx={{ mt: "50px" }}
-				>
-					Zobacz więcej!
-				</Button>
-			</Box>
+			{data && (
+				<>
+					<Image
+						src={data.image}
+						layout="fill"
+						alt="hero-section-background"
+						objectFit="cover"
+						priority
+					/>
+					<Box
+						sx={{
+							display: "flex",
+							alignItems: "center",
+							flexDirection: "column",
+							justifyContent: "center",
+							height: "100%",
+							position: "relative",
+							zIndex: 1,
+						}}
+					>
+						<Typography
+							fontWeight="fontWeightBold"
+							variant="h1"
+							textAlign="center"
+							mb="10px"
+						>
+							{data.title}
+						</Typography>
+						<Typography fontWeight="fontWeightMedium" textAlign="center">
+							{data.subtitle}
+						</Typography>
+						<ButtonLink
+							variant="outlined"
+							color="heroPrimary"
+							href={`/category/${data.categoryId}`}
+							size={isDesktop ? "large" : "medium"}
+							sx={{ mt: "50px" }}
+						>
+							{data.buttonText}
+						</ButtonLink>
+					</Box>
+				</>
+			)}
 		</Box>
 	);
 };

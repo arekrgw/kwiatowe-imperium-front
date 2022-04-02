@@ -8,7 +8,7 @@ class MyDocument extends Document {
 			<Html lang="en">
 				<Head>
 					{/* PWA primary color */}
-					<link rel="shortcut icon" href="/static/favicon.ico" />
+					<link rel="shortcut icon" href="/favicon.png" />
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
 					<link
 						rel="preconnect"

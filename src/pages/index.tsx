@@ -1,5 +1,5 @@
-import { API, getQueryClient, prepareApi } from "@app/api";
-import { categoriesQuery, heroSectionQuery, homePageQuery } from "@app/queries";
+import { prepareApi } from "@app/api";
+import { heroSectionQuery, homePageQuery } from "@app/queries";
 import { HeroSection } from "@components/HeroSection";
 import PageCenterWrapper from "@components/PageCenterWrapper";
 import ProductsList from "@components/ProductsList/ProductsList";

@@ -16,6 +16,20 @@ export const GlobalStyle = () => {
           }
         }
 
+        .productSwiper {
+          .swiper-button-next {
+            color: ${theme.palette.secondary.main};
+          }
+
+          .swiper-button-prev {
+            color: ${theme.palette.secondary.main};
+          }
+
+          .swiper-pagination-bullet-active {
+            background: ${theme.palette.secondary.main};
+          }
+        }
+
       `}
 		/>
 	);

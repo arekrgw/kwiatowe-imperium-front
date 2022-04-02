@@ -4,6 +4,7 @@ import { LoginForm, RegisterForm } from "@components/SignIn";
 import { Box, Grid, Typography } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Head from "next/head";
 import { FormattedMessage } from "react-intl";
 import { dehydrate } from "react-query";
 

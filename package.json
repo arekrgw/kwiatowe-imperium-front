@@ -28,6 +28,7 @@
     "react-intl": "^5.24.6",
     "react-query": "^3.34.16",
     "react-swipeable": "^6.2.0",
+    "swiper": "^8.0.7",
     "yup": "^0.32.11"
   },
   "devDependencies": {

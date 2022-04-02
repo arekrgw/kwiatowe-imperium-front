@@ -1,10 +1,11 @@
-import { API, prepareApi } from "@app/api";
+import { prepareApi } from "@app/api";
 import { categoryListingQuery } from "@app/queries";
 import PageCenterWrapper from "@components/PageCenterWrapper";
 import ProductsList from "@components/ProductsList/ProductsList";
 import { Box, Skeleton, Typography } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import { FormattedMessage } from "react-intl";

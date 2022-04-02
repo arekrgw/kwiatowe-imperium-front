@@ -5,6 +5,7 @@ import type { GetServerSideProps } from "next";
 import { dehydrate } from "react-query";
 import { prepareApi } from "@app/api";
 import { Profile } from "@components/Profile";
+import { FormattedMessage } from "react-intl";
 
 interface HomeProps extends IDehydratedState {}
 

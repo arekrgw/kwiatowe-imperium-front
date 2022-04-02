@@ -7,7 +7,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import { dehydrate, useQuery } from "react-query";
-
+import { Mousewheel, Pagination, Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 interface ProductPageProps extends IDehydratedState {}
 
 interface Params extends ParsedUrlQuery {
@@ -63,27 +67,50 @@ const ProductPage: NextPage<ProductPageProps> = (props) => {
 				})}
 			>
 				<Grid item xs={12} md={6}>
-					<Box
-						sx={(theme) => ({
-							position: "relative",
-							height: "100vw",
-							width: "100%",
-							backgroundColor: "brown.100",
-							[theme.breakpoints.up("sm")]: {
-								height: "50vw",
-							},
-							[theme.breakpoints.up("md")]: {
-								height: "500px",
-							},
-						})}
+					<Swiper
+						direction={"horizontal"}
+						slidesPerView={1}
+						spaceBetween={30}
+						navigation={true}
+						mousewheel={{
+							forceToAxis: true,
+							thresholdDelta: 30,
+						}}
+						pagination={{
+							clickable: true,
+						}}
+						modules={[Mousewheel, Pagination, Navigation]}
+						className="productSwiper"
 					>
-						<Image
-							src={images.length ? images[0].url : "/image-placeholder.png"}
-							alt={`${name}-image`}
-							layout="fill"
-							objectFit="contain"
-						/>
-					</Box>
+						{images.map((img, i) => (
+							<SwiperSlide key={img.id}>
+								<Box
+									sx={(theme) => ({
+										position: "relative",
+										height: "100vw",
+										width: "100%",
+										backgroundColor: "brown.100",
+										[theme.breakpoints.up("sm")]: {
+											height: "50vw",
+										},
+										[theme.breakpoints.up("md")]: {
+											height: "500px",
+										},
+										overflow: "hidden",
+										borderRadius: "4px",
+									})}
+								>
+									<Image
+										src={img.url}
+										alt=""
+										layout="fill"
+										objectFit="contain"
+										priority={i === 0}
+									/>
+								</Box>
+							</SwiperSlide>
+						))}
+					</Swiper>
 				</Grid>
 				<Grid item xs={12} md={6}>
 					<Paper sx={{ p: "20px" }}>

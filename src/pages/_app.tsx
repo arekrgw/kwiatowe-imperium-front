@@ -51,9 +51,8 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = (
 	}, [shortLocale]);
 
 	const messages = useMemo(() => {
-		if (shortLocale === "pl") return pl;
 		if (shortLocale === "en") return en;
-		return {};
+		return pl;
 	}, [shortLocale]);
 
 	const getLayout = Component.getLayout;
@@ -63,6 +62,8 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = (
 			<Head>
 				<meta name="viewport" content="initial-scale=1, width=device-width" />
 				<meta name="theme-color" content={theme.palette.secondary.main} />
+				<meta name="description" content={messages["meta.description"]} />
+				<title>Kwiatowe Imperium</title>
 			</Head>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />

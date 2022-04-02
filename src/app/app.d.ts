@@ -53,7 +53,7 @@ declare global {
 		title: string;
 		subtitle: string;
 		buttonText: string;
-		specialCategoryName: string;
+		categoryId: string;
 	}
 
 	interface CategoryWithProductsList extends Category {

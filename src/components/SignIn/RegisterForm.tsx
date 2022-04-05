@@ -1,14 +1,36 @@
 import PasswordField from "@components/PasswordField";
-import { Box, TextField, Button, Grid } from "@mui/material";
+import {
+	Box,
+	TextField,
+	Button,
+	Grid,
+	FormHelperText,
+	Alert,
+	AlertTitle,
+} from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import Wrapper from "./Wrapper";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import apiRoutes from "@app/apiRoutes";
+import { API } from "@app/api";
+import axios from "axios";
+import { useState } from "react";
+export interface RegisterData {
+	name: string;
+	surname: string;
+	email: string;
+	password: string;
+	submitError: string;
+}
 
 const validationSchema = yup.object({
-	firstName: yup.string().required("validation.required"),
-	lastName: yup.string().required("validation.required"),
+	name: yup.string().min(3, "validation.min3").required("validation.required"),
+	surname: yup
+		.string()
+		.min(3, "validation.min3")
+		.required("validation.required"),
 	email: yup.string().email("validation.email").required("validation.required"),
 	password: yup
 		.string()
@@ -16,38 +38,64 @@ const validationSchema = yup.object({
 		.required("validation.required"),
 });
 
-export interface RegisterData {
-	firstName: string;
-	lastName: string;
-	email: string;
-	password: string;
-}
-
 interface RegisterFormProps {}
 
 const RegisterForm = (props: RegisterFormProps) => {
 	const {
 		handleSubmit,
 		control,
+		reset,
+		setError,
+		clearErrors,
 		formState: { errors },
 	} = useForm<RegisterData>({
-		defaultValues: { email: "", password: "", firstName: "", lastName: "" },
+		defaultValues: { email: "", password: "", name: "", surname: "" },
 		resolver: yupResolver(validationSchema),
 	});
 
-	const onRegister = (data: RegisterData) => {
-		console.log(data);
+	const [success, setSuccess] = useState(false);
+	const intl = useIntl();
+
+	const onRegister = async (formValues: RegisterData) => {
+		try {
+			const { data } = await API.getInstance().post<string>(
+				apiRoutes.register,
+				{
+					...formValues,
+				}
+			);
+
+			reset();
+			setSuccess(true);
+		} catch (err) {
+			if (axios.isAxiosError(err)) {
+				setError("submitError", {
+					message: intl.formatMessage({
+						id: `validation.${err.response?.data}`,
+					}),
+				});
+			}
+		}
 	};
 
 	return (
 		<Wrapper title="signin.register">
+			{success && (
+				<Alert severity="success" sx={{ mt: "20px", mb: "30px" }}>
+					<AlertTitle>
+						<FormattedMessage id="register.success.title" />
+					</AlertTitle>
+					<FormattedMessage id="register.success.message" />
+				</Alert>
+			)}
+
 			<form onSubmit={handleSubmit(onRegister)}>
 				<Box sx={{ mt: "20px" }}>
 					<Grid container spacing="15px">
 						<Grid item xs={12} md={6}>
 							<Controller
 								control={control}
-								name="firstName"
+								name="name"
 								render={({ field }) => (
 									<TextField
 										variant="outlined"
@@ -68,7 +116,7 @@ const RegisterForm = (props: RegisterFormProps) => {
 						<Grid item xs={12} md={6}>
 							<Controller
 								control={control}
-								name="lastName"
+								name="surname"
 								render={({ field }) => (
 									<TextField
 										variant="outlined"
@@ -130,7 +178,20 @@ const RegisterForm = (props: RegisterFormProps) => {
 						</Grid>
 					</Grid>
 				</Box>
-				<Button type="submit" variant="contained" fullWidth sx={{ mt: "20px" }}>
+
+				{errors.submitError && (
+					<FormHelperText error sx={{ mt: "20px" }}>
+						{errors.submitError?.message}
+					</FormHelperText>
+				)}
+
+				<Button
+					type="submit"
+					variant="contained"
+					fullWidth
+					sx={{ mt: "20px" }}
+					onClick={() => clearErrors("submitError")}
+				>
 					<FormattedMessage id="signin.btn-register" />
 				</Button>
 			</form>

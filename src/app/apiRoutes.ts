@@ -1,5 +1,6 @@
 const apiRoutes = {
 	login: "/auth/authenticate",
+	register: "/auth/register",
 	homepageProducts: "/api/category/name/homepage",
 	product: (id: string) => `/api/product/${id}`,
 	products: "/api/product/all",

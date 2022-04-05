@@ -29,14 +29,19 @@
 	"signin.lastName": "Nazwisko",
 	"signin.email": "E-mail",
 	"signin.password": "Hasło",
+	"signin.newPassword": "Nowe hasło",
 
 	"signin.btn-login": "Zaloguj się",
 	"signin.btn-register": "Zarejestruj się",
+
+	"register.success.title": "Rejestracja udana!",
+	"register.success.message": "Rejestracja przebiegła pomyślnie, możesz się teraz zalogować",
 
 	"validation.required": "To pole jest wymagane",
 	"validation.min3": "Minimalnie 3 znaki wymagane",
 	"validation.email": "Niepoprawny e-mail",
 	"validation.notValidCredentials": "Email lub hasło jest nieprawidłowe",
+	"validation.User already exist": "Ten adres e-mail jest już zajęty",
 
 	"categoryListing": "Wyniki dla kategorii: {categoryName}",
 	"categoryListingAll": "Wszystkie dostępne kwiaty",
@@ -45,5 +50,12 @@
 	"profile.tab.details": "Szczegóły",
 	"profile.tab.orders": "Zamówienia",
 	"profile.tab.addresses": "Adresy",
-	"profile.tab.calendar": "Kalendarz"
+	"profile.tab.calendar": "Kalendarz",
+
+	"profile.section.details": "Szczegóły",
+	"profile.section.orders": "Zamówienia",
+	"profile.section.addresses": "Adresy",
+	"profile.section.calendar": "Kalendarz",
+
+	"profile.details.update": "Aktualizuj profil"
 }

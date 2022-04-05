@@ -13,14 +13,11 @@ const Wrapper: FC<WrapperProps> = ({ children, title }) => {
 				component="h1"
 				sx={(theme) => ({
 					fontSize: "h4.fontSize",
-					// [theme.breakpoints.up("md")]: {
-					// 	fontSize: "h4.fontSize",
-					// },
 				})}
 			>
 				<FormattedMessage id={title} />
-				<Box>{children}</Box>
 			</Typography>
+			<Box>{children}</Box>
 		</Paper>
 	);
 };

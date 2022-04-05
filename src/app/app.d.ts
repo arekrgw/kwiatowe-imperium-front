@@ -45,6 +45,7 @@ declare global {
 		email: string;
 		name: string;
 		surname: string;
+		password: string;
 	}
 
 	interface Hero {

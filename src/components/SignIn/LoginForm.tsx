@@ -34,7 +34,7 @@ const LoginForm = (props: LoginFormProps) => {
 			const { data } = await API.getInstance().post<LoginResponse>(
 				apiRoutes.login,
 				{
-					username: formValues.email,
+					email: formValues.email,
 					password: formValues.password,
 				}
 			);

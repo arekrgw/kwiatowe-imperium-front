@@ -5,6 +5,7 @@
 	"menu.signin": "Sign in",
 	"menu.categories": "Categories",
 	"menu.fulloffer": "Full offer",
+	"menu.logout": "Log out",
 
 	"meta.description": "Kwiatowe Imperium, store with flowers for every occasion.",
 
@@ -57,5 +58,8 @@
 	"profile.section.addresses": "Addresses",
 	"profile.section.calendar": "Calendar",
 
-	"profile.details.update": "Update profile"
+	"profile.details.update": "Update profile",
+
+
+	"product.addToCart": "Add to cart"
 }

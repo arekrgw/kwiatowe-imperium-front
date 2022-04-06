@@ -14,3 +14,7 @@ export const getJwt = (ctx?: GetServerSidePropsContext) => {
 export const setJwt = (jwt: string) => {
 	Cookies.set(JWT_KEY, jwt, { expires: 365 });
 };
+
+export const removeJwt = () => {
+	Cookies.remove(JWT_KEY);
+};

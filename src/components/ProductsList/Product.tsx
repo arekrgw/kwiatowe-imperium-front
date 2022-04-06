@@ -1,8 +1,8 @@
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Button, Paper, Typography } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 import Link from "next/link";
 import Image from "next/image";
-
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 interface ProductProps {
 	product: Product;
 }
@@ -79,6 +79,13 @@ const Product = ({ product }: ProductProps) => {
 							{price.toFixed(2)} PLN
 						</Typography>
 					</Box>
+					<Button
+						startIcon={<AddShoppingCartIcon />}
+						variant="contained"
+						sx={{ mt: "10px" }}
+					>
+						<FormattedMessage id="product.addToCart" />
+					</Button>
 				</Box>
 			</Paper>
 		</Link>

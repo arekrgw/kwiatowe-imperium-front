@@ -31,6 +31,7 @@
 	"signin.email": "E-mail",
 	"signin.password": "Password",
 	"signin.newPassword": "New password",
+	"signin.oldPassword": "Current password",
 
 	"signin.btn-login": "Login",
 	"signin.btn-register": "Register",
@@ -54,12 +55,17 @@
 	"profile.tab.calendar": "Calendar",
 
 	"profile.section.details": "Details",
+	"profile.section.changePassword": "Change password",
 	"profile.section.orders": "Orders",
 	"profile.section.addresses": "Addresses",
 	"profile.section.calendar": "Calendar",
 
 	"profile.details.update": "Update profile",
+	"profile.details.changePassword": "Update password",
+	"profile.details.success": "Profile updated successfully",
 
+	"product.addToCart": "Add to cart",
 
-	"product.addToCart": "Add to cart"
+	"passwordChange.error.Wrong passwrod": "Current password is incorrect",
+	"passwordChange.success": "Password changed successfully"
 }

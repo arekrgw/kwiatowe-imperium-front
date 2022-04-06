@@ -7,6 +7,7 @@ const apiRoutes = {
 	categories: "/api/category/allVisible",
 	category: (id: string) => `/api/category/${id}`,
 	userProfile: "/auth/me",
+	passwordChange: "/auth/me/passwordChange",
 };
 
 export default apiRoutes;

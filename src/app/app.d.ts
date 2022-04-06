@@ -40,12 +40,16 @@ declare global {
 		jwt: string;
 	}
 
+	interface Role {
+		id: string;
+		name: string;
+	}
 	interface User {
 		username: string;
 		email: string;
 		name: string;
 		surname: string;
-		password: string;
+		roles: Role[];
 	}
 
 	interface Hero {

@@ -1,3 +1,5 @@
+import { isAdmin } from "@app/auth";
+import { userProfile } from "@app/queries";
 import LinkTab from "@components/LinkTab";
 import ListItemButtonLink from "@components/ListItemButtonLink";
 import {
@@ -10,28 +12,43 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import { FormattedMessage } from "react-intl";
+import { useQuery } from "react-query";
 
 interface ProfileNavigationProps {
 	selectedTab: string;
 	pathname: string;
 }
 
-export const TABS_MAPPING = [
+interface ITab {
+	label: string;
+	value: string;
+	adminOnly?: true;
+}
+
+export const TABS_MAPPING: ITab[] = [
 	{ label: "profile.tab.details", value: "details" },
 	{ label: "profile.tab.orders", value: "orders" },
 	{ label: "profile.tab.addresses", value: "addresses" },
 	{ label: "profile.tab.calendar", value: "calendar" },
+	{ label: "profile.tab.products", value: "products", adminOnly: true },
+	{ label: "profile.tab.categories", value: "categories", adminOnly: true },
+	{ label: "profile.tab.hero", value: "hero", adminOnly: true },
+	{ label: "profile.tab.users", value: "users", adminOnly: true },
 ];
+
+const isAvailable = (profile?: User | null) => (t: ITab) =>
+	(t.adminOnly && isAdmin(profile)) || !t.adminOnly;
 
 const ProfileNavigation: FC<ProfileNavigationProps> = ({
 	selectedTab,
 	pathname,
 }) => {
+	const { data: profile } = useQuery(...userProfile());
 	const isDesktop = useMediaQuery<Theme>((theme) => theme.breakpoints.up("md"));
 
 	return isDesktop ? (
 		<List sx={{ p: 0 }}>
-			{TABS_MAPPING.map((tab) => (
+			{TABS_MAPPING.filter(isAvailable(profile)).map((tab) => (
 				<ListItemButtonLink
 					href={`${pathname}?section=${tab.value}`}
 					key={tab.value}
@@ -69,7 +86,7 @@ const ProfileNavigation: FC<ProfileNavigationProps> = ({
 			}}
 			allowScrollButtonsMobile
 		>
-			{TABS_MAPPING.map((tab) => (
+			{TABS_MAPPING.filter(isAvailable(profile)).map((tab) => (
 				<LinkTab
 					key={tab.value}
 					label={<FormattedMessage id={tab.label} />}

@@ -33,7 +33,8 @@ const NavBar: FC<NavBarProps> = () => {
 				alignItems: "center",
 				zIndex: 98,
 				[theme.breakpoints.up("sm")]: {
-					position: "static",
+					position: "sticky",
+					top: 0,
 					justifyContent: "space-between",
 					px: "20px",
 				},

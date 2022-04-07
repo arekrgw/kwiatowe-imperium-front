@@ -53,12 +53,17 @@
 	"profile.tab.orders": "Orders",
 	"profile.tab.addresses": "Addresses",
 	"profile.tab.calendar": "Calendar",
+	"profile.tab.products": "Products",
+	"profile.tab.categories": "Categories",
+	"profile.tab.hero": "Hero section",
+	"profile.tab.users": "Users",
 
 	"profile.section.details": "Details",
 	"profile.section.changePassword": "Change password",
 	"profile.section.orders": "Orders",
 	"profile.section.addresses": "Addresses",
 	"profile.section.calendar": "Calendar",
+	"profile.section.hero": "Hero",
 
 	"profile.details.update": "Update profile",
 	"profile.details.changePassword": "Update password",
@@ -67,5 +72,10 @@
 	"product.addToCart": "Add to cart",
 
 	"passwordChange.error.Wrong passwrod": "Current password is incorrect",
-	"passwordChange.success": "Password changed successfully"
+	"passwordChange.success": "Password changed successfully",
+
+	"hero.titlePl": "Title (polish)",
+	"hero.titleEn": "Title (english)",
+
+	"hero.section.update": "Update hero"
 }

@@ -52,12 +52,22 @@
 	"profile.tab.orders": "Zamówienia",
 	"profile.tab.addresses": "Adresy",
 	"profile.tab.calendar": "Kalendarz",
+	"profile.tab.products": "Produkty",
+	"profile.tab.categories": "Kategorie",
+	"profile.tab.hero": "Strona główna",
+	"profile.tab.users": "Użytkownicy",
 
 	"profile.section.details": "Szczegóły",
 	"profile.section.orders": "Zamówienia",
 	"profile.section.addresses": "Adresy",
 	"profile.section.calendar": "Kalendarz",
+	"profile.section.hero": "Strona główna",
 
 	"profile.details.update": "Aktualizuj profil",
-	"product.addToCart": "Do koszyka"
+	"product.addToCart": "Do koszyka",
+
+	"hero.titlePl": "Tytuł (polski)",
+	"hero.titleEn": "Tytuł (angielski)",
+	"hero.section.update": "Aktualizuj SG"
+
 }

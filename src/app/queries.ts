@@ -65,7 +65,10 @@ export const userProfile: QueryDescriptor<User | null> = () => [
 			return res.data;
 		} catch (err) {
 			if (axios.isAxiosError(err)) {
-				if (Number(err.response?.status) === 400) {
+				if (
+					Number(err.response?.status) === 403 ||
+					Number(err.response?.status) === 400
+				) {
 					return null;
 				}
 			}

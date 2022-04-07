@@ -18,3 +18,6 @@ export const setJwt = (jwt: string) => {
 export const removeJwt = () => {
 	Cookies.remove(JWT_KEY);
 };
+
+export const isAdmin = (profile?: User | null) =>
+	!!profile?.roles.find((role) => role.name === "ADMIN");

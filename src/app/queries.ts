@@ -80,13 +80,7 @@ export const userProfile: QueryDescriptor<User | null> = () => [
 export const heroSectionQuery: QueryDescriptor<Hero> = () => [
 	"heroSection",
 	async () => {
-		return {
-			id: "1",
-			buttonText: "Zobacz więcej!",
-			title: "Wiosna nadchodzi!",
-			subtitle: "Zadbaj o swoje otoczenie i spraw sobie nowe rośliny!",
-			image: "/springback.jpeg",
-			categoryId: "7",
-		};
+		const res = await API.getInstance().get<Hero>(apiRoutes.hero);
+		return res.data;
 	},
 ];

@@ -76,6 +76,10 @@
 
 	"hero.titlePl": "Title (polish)",
 	"hero.titleEn": "Title (english)",
+	"hero.buttonTextEn": "Button text (english)",
+	"hero.buttonTextPl": "Button text (polish)",
+	"hero.subtitleEn": "Subtitle (english)",
+	"hero.subtitlePl": "Subtitle (polish)",
 
 	"hero.section.update": "Update hero"
 }

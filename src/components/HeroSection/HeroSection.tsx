@@ -22,7 +22,7 @@ const HeroSection = () => {
 			{data && (
 				<>
 					<Image
-						src={data.image}
+						src={data.image.url}
 						layout="fill"
 						alt="hero-section-background"
 						objectFit="cover"

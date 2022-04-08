@@ -1,5 +1,6 @@
 import apiRoutes from "@app/apiRoutes";
 import { useTimedSuccess } from "@app/utils/otherUtils";
+import PickImage from "@components/PickImage";
 import {
 	Alert,
 	Box,
@@ -119,6 +120,96 @@ const Hero: FC<HeroProps> = () => {
 										{...field}
 									/>
 								)}
+							/>
+						</Grid>
+
+						<Grid item xs={12} md={6}>
+							<Controller
+								control={control}
+								name="subtitlePl"
+								render={({ field }) => (
+									<TextField
+										variant="outlined"
+										fullWidth
+										error={!!errors[field.name]}
+										helperText={
+											errors[field.name] && (
+												<FormattedMessage id={errors[field.name]?.message} />
+											)
+										}
+										label={<FormattedMessage id="hero.subtitlePl" />}
+										{...field}
+									/>
+								)}
+							/>
+						</Grid>
+						<Grid item xs={12} md={6}>
+							<Controller
+								control={control}
+								name="subtitleEn"
+								render={({ field }) => (
+									<TextField
+										variant="outlined"
+										fullWidth
+										error={!!errors[field.name]}
+										helperText={
+											errors[field.name] && (
+												<FormattedMessage id={errors[field.name]?.message} />
+											)
+										}
+										label={<FormattedMessage id="hero.subtitleEn" />}
+										{...field}
+									/>
+								)}
+							/>
+						</Grid>
+
+						<Grid item xs={12} md={6}>
+							<Controller
+								control={control}
+								name="buttonTextEn"
+								render={({ field }) => (
+									<TextField
+										variant="outlined"
+										fullWidth
+										error={!!errors[field.name]}
+										helperText={
+											errors[field.name] && (
+												<FormattedMessage id={errors[field.name]?.message} />
+											)
+										}
+										label={<FormattedMessage id="hero.buttonTextEn" />}
+										{...field}
+									/>
+								)}
+							/>
+						</Grid>
+
+						<Grid item xs={12} md={6}>
+							<Controller
+								control={control}
+								name="buttonTextEn"
+								render={({ field }) => (
+									<TextField
+										variant="outlined"
+										fullWidth
+										error={!!errors[field.name]}
+										helperText={
+											errors[field.name] && (
+												<FormattedMessage id={errors[field.name]?.message} />
+											)
+										}
+										label={<FormattedMessage id="hero.buttonTextEn" />}
+										{...field}
+									/>
+								)}
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<Controller
+								control={control}
+								name="image"
+								render={({ field }) => <PickImage {...field} />}
 							/>
 						</Grid>
 					</Grid>

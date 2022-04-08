@@ -54,11 +54,21 @@ declare global {
 
 	interface Hero {
 		id: string;
-		image: string;
+		image: Image;
 		title: string;
 		subtitle: string;
 		buttonText: string;
 		categoryId: string;
+	}
+
+	interface HeroEdit {
+		titleEn: string;
+		titlePl: string;
+		subtitleEn: string;
+		subtitlePl: string;
+		buttonTextEn: string;
+		buttonTextPl: string;
+		image: Image;
 	}
 
 	interface CategoryWithProductsList extends Category {

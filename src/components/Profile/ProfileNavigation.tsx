@@ -1,4 +1,4 @@
-import { isAdmin } from "@app/auth";
+import { isAvailable } from "@app/auth";
 import { userProfile } from "@app/queries";
 import LinkTab from "@components/LinkTab";
 import ListItemButtonLink from "@components/ListItemButtonLink";
@@ -13,31 +13,12 @@ import {
 import { FC } from "react";
 import { FormattedMessage } from "react-intl";
 import { useQuery } from "react-query";
+import { TABS_MAPPING } from "./tabQueryMapping";
 
 interface ProfileNavigationProps {
 	selectedTab: string;
 	pathname: string;
 }
-
-interface ITab {
-	label: string;
-	value: string;
-	adminOnly?: true;
-}
-
-export const TABS_MAPPING: ITab[] = [
-	{ label: "profile.tab.details", value: "details" },
-	{ label: "profile.tab.orders", value: "orders" },
-	{ label: "profile.tab.addresses", value: "addresses" },
-	{ label: "profile.tab.calendar", value: "calendar" },
-	{ label: "profile.tab.products", value: "products", adminOnly: true },
-	{ label: "profile.tab.categories", value: "categories", adminOnly: true },
-	{ label: "profile.tab.hero", value: "hero", adminOnly: true },
-	{ label: "profile.tab.users", value: "users", adminOnly: true },
-];
-
-const isAvailable = (profile?: User | null) => (t: ITab) =>
-	(t.adminOnly && isAdmin(profile)) || !t.adminOnly;
 
 const ProfileNavigation: FC<ProfileNavigationProps> = ({
 	selectedTab,

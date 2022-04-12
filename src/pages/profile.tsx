@@ -5,7 +5,8 @@ import type { GetServerSideProps } from "next";
 import { dehydrate } from "react-query";
 import { prepareApi } from "@app/api";
 import { Profile } from "@components/Profile";
-import { FormattedMessage } from "react-intl";
+import { isAvailable } from "@app/auth";
+import { TABS_MAPPING, tabQueryMapping } from "@components/Profile";
 
 interface HomeProps extends IDehydratedState {}
 
@@ -21,7 +22,7 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 		};
 	}
 
-	const [queryClient, , userPromise, awaitAll] = prepareApi(ctx);
+	const [queryClient, promises, userPromise, awaitAll] = prepareApi(ctx);
 
 	const user = await userPromise;
 	if (!user) {
@@ -31,6 +32,17 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 				permanent: false,
 			},
 		};
+	}
+
+	const tab = TABS_MAPPING.filter(isAvailable(user)).find(
+		(t) => t.value === ctx.query?.section
+	);
+
+	if (tab) {
+		const query = tabQueryMapping[tab.value as keyof typeof tabQueryMapping];
+		if (query) {
+			promises.push(queryClient.prefetchQuery(...query()));
+		}
 	}
 
 	await awaitAll();

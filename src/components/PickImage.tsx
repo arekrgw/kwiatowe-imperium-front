@@ -13,7 +13,7 @@ import {
 	useState,
 } from "react";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
-import ImageLibrary from "@components/ImageLibrary";
+import { ImageLibrary } from "@components/ImageLibrary";
 
 interface PickImageProps {
 	value: Image;

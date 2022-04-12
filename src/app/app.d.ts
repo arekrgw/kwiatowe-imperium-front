@@ -74,4 +74,10 @@ declare global {
 	interface CategoryWithProductsList extends Category {
 		products: Product[];
 	}
+
+	interface ITab {
+		label: string;
+		value: string;
+		adminOnly?: true;
+	}
 }

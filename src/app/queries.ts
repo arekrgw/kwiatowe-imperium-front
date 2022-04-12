@@ -84,3 +84,19 @@ export const heroSectionQuery: QueryDescriptor<Hero> = () => [
 		return res.data;
 	},
 ];
+
+export const heroEditQuery: QueryDescriptor<HeroEdit> = () => [
+	"heroEdit",
+	async () => {
+		const res = await API.getInstance().get<HeroEdit>(apiRoutes.hero);
+		return res.data;
+	},
+];
+
+export const allImagesQuery: QueryDescriptor<Image[]> = () => [
+	"allImages",
+	async () => {
+		const res = await API.getInstance().get<Image[]>(apiRoutes.allImages);
+		return res.data;
+	},
+];

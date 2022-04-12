@@ -21,3 +21,6 @@ export const removeJwt = () => {
 
 export const isAdmin = (profile?: User | null) =>
 	!!profile?.roles.find((role) => role.name === "ADMIN");
+
+export const isAvailable = (profile?: User | null) => (t: ITab) =>
+	(t.adminOnly && isAdmin(profile)) || !t.adminOnly;

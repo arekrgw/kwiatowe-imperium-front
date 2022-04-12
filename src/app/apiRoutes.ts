@@ -9,6 +9,7 @@ const apiRoutes = {
 	userProfile: "/auth/me",
 	passwordChange: "/auth/me/passwordChange",
 	hero: "/api/hero",
+	allImages: "/api/image/all",
 };
 
 export default apiRoutes;

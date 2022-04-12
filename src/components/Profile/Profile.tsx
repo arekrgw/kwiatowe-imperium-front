@@ -8,7 +8,8 @@ import Calendar from "./Calendar";
 import Details from "./Details";
 import Hero from "./Hero";
 import Orders from "./Orders";
-import ProfileNavigation, { TABS_MAPPING } from "./ProfileNavigation";
+import ProfileNavigation from "./ProfileNavigation";
+import { TABS_MAPPING } from "./tabQueryMapping";
 import ProfileSkeleton from "./ProfileSkeleton";
 
 const Profile = () => {

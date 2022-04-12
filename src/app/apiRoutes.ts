@@ -10,6 +10,7 @@ const apiRoutes = {
 	passwordChange: "/auth/me/passwordChange",
 	hero: "/api/hero",
 	allImages: "/api/image/all",
+	upload: "/api/image/db",
 };
 
 export default apiRoutes;

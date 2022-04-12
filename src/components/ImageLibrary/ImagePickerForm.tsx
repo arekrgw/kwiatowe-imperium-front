@@ -4,6 +4,7 @@ import { FC, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useQuery } from "react-query";
 import ImageCheckbox from "./ImageCheckbox";
+import ImagesSkeleton from "./ImagesSkeleton";
 
 interface ImagePickerFormProps {}
 
@@ -22,18 +23,21 @@ const ImagePickerForm: FC<ImagePickerFormProps> = () => {
 
 	return (
 		<Box display="flex" flexDirection="column" width="100%" height="100%">
-			<Box sx={{ flex: "1", overflowY: "auto" }}>
+			<Box sx={{ flex: "1 0 0", overflowY: "auto" }}>
 				<Grid container spacing="10px">
-					{data &&
-						[...data, ...data, ...data].map((img) => (
-							<Grid item xs={6} sm={4} md={3} lg={2} key={img.id} width="20%">
+					{data ? (
+						data.map((img) => (
+							<Grid item xs={6} sm={4} md={3} lg={2} key={img.id}>
 								<ImageCheckbox
 									img={img}
 									value={selectedImages.includes(img.id)}
 									onChange={onImageSelect}
 								/>
 							</Grid>
-						))}
+						))
+					) : (
+						<ImagesSkeleton />
+					)}
 				</Grid>
 			</Box>
 

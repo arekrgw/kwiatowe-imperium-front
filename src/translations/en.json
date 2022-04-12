@@ -81,5 +81,10 @@
 	"hero.subtitleEn": "Subtitle (english)",
 	"hero.subtitlePl": "Subtitle (polish)",
 
-	"hero.section.update": "Update hero"
+	"hero.section.update": "Update hero",
+
+	"imageUpload.pickFromDisk": "Pick image from disk",
+	"imageUpload.uploadToServer": "Upload image",
+	"imagePicker.title": "Image library",
+	"imagePicker.pickImages": "Pick selected images"
 }

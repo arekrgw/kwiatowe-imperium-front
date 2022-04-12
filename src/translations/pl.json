@@ -68,6 +68,10 @@
 
 	"hero.titlePl": "Tytuł (polski)",
 	"hero.titleEn": "Tytuł (angielski)",
-	"hero.section.update": "Aktualizuj SG"
+	"hero.section.update": "Aktualizuj SG",
 
+	"imageUpload.pickFromDisk": "Wybierz obraz z dysku",
+	"imageUpload.uploadToServer": "Dodaj obraz",
+	"imagePicker.title": "Biblioteka obrazów",
+	"imagePicker.pickImages": "Wybierz zaznaczone obrazy"
 }

@@ -6,12 +6,22 @@ import { useQuery } from "react-query";
 import ImageCheckbox from "./ImageCheckbox";
 import ImagesSkeleton from "./ImagesSkeleton";
 
-interface ImagePickerFormProps {}
+interface ImagePickerFormProps {
+	setImages: (images: Image[]) => void;
+	close: () => void;
+	currentlySelectedImages: Image[];
+}
 
-const ImagePickerForm: FC<ImagePickerFormProps> = () => {
+const ImagePickerForm: FC<ImagePickerFormProps> = ({
+	setImages,
+	close,
+	currentlySelectedImages,
+}) => {
 	const { data } = useQuery(...allImagesQuery());
 
-	const [selectedImages, setSelectedImages] = useState<string[]>([]);
+	const [selectedImages, setSelectedImages] = useState<string[]>(
+		currentlySelectedImages.map(({ id }) => id)
+	);
 
 	const onImageSelect = (imageId: string) => {
 		if (selectedImages.includes(imageId)) {
@@ -51,6 +61,12 @@ const ImagePickerForm: FC<ImagePickerFormProps> = () => {
 					type="submit"
 					variant="contained"
 					disabled={!selectedImages.length}
+					onClick={() => {
+						if (data) {
+							setImages(data.filter((img) => selectedImages.includes(img.id)));
+							close();
+						}
+					}}
 				>
 					<FormattedMessage id="imagePicker.pickImages" />
 				</Button>

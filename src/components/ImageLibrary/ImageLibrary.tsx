@@ -8,9 +8,16 @@ import CloseIcon from "@mui/icons-material/Close";
 interface ImageLibraryProps {
 	open: boolean;
 	setOpen: Dispatch<SetStateAction<boolean>>;
+	setImages: (images: Image[]) => void;
+	currentlySelectedImages: Image[];
 }
 
-const ImageLibrary: FC<ImageLibraryProps> = ({ open, setOpen }) => {
+const ImageLibrary: FC<ImageLibraryProps> = ({
+	open,
+	setOpen,
+	setImages,
+	currentlySelectedImages,
+}) => {
 	return (
 		<Modal open={open} onClose={(_, reason) => setOpen(false)}>
 			<Paper
@@ -40,7 +47,11 @@ const ImageLibrary: FC<ImageLibraryProps> = ({ open, setOpen }) => {
 				</Box>
 				<Box flex="1" display="flex" flexDirection="column" gap="10px">
 					<Box flexBasis="80%">
-						<ImagePickerForm />
+						<ImagePickerForm
+							setImages={setImages}
+							close={() => setOpen(false)}
+							currentlySelectedImages={currentlySelectedImages}
+						/>
 					</Box>
 					<Box flexBasis="20%" bgcolor="grey.100" borderRadius="4px">
 						<ImageUpload />

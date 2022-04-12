@@ -14,7 +14,6 @@ const ImageUpload: FC<ImageUploadProps> = () => {
 	const [error, setError] = useState("");
 	const queryClient = useQueryClient();
 	const intl = useIntl();
-	console.log(file, file?.name);
 
 	const sendFile = async () => {
 		if (!file) return;

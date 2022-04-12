@@ -68,7 +68,7 @@ declare global {
 		subtitlePl: string;
 		buttonTextEn: string;
 		buttonTextPl: string;
-		image: Image;
+		image: Image | null;
 	}
 
 	interface CategoryWithProductsList extends Category {

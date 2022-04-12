@@ -29,7 +29,7 @@ const Hero: FC<HeroProps> = () => {
 		control,
 		formState: { errors },
 	} = useForm<HeroData>({
-		defaultValues: {},
+		defaultValues: { image: null },
 	});
 
 	const { show, setShow } = useTimedSuccess();
@@ -37,6 +37,7 @@ const Hero: FC<HeroProps> = () => {
 
 	const onHeroUpdate = async (formValues: HeroData) => {
 		try {
+			console.log(formValues);
 			// const { data: user } = await API.getInstance().patch<User>(
 			// 	apiRoutes.userProfile,
 			// 	formValues

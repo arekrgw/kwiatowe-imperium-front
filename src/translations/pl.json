@@ -50,7 +50,6 @@
 	"profile.title": "Szczegóły twojego profilu, {firstName}",
 	"profile.tab.details": "Szczegóły",
 	"profile.tab.orders": "Zamówienia",
-	"profile.tab.addresses": "Adresy",
 	"profile.tab.calendar": "Kalendarz",
 	"profile.tab.products": "Produkty",
 	"profile.tab.categories": "Kategorie",
@@ -59,7 +58,6 @@
 
 	"profile.section.details": "Szczegóły",
 	"profile.section.orders": "Zamówienia",
-	"profile.section.addresses": "Adresy",
 	"profile.section.calendar": "Kalendarz",
 	"profile.section.hero": "Strona główna",
 
@@ -68,7 +66,14 @@
 
 	"hero.titlePl": "Tytuł (polski)",
 	"hero.titleEn": "Tytuł (angielski)",
+	"hero.buttonTextEn": "Tekst przycisku (angielski)",
+	"hero.buttonTextPl": "Tekst przycisku (polski)",
+	"hero.subtitleEn": "Podtytuł (angielski)",
+	"hero.subtitlePl": "Podtytuł (polski)",
+	"hero.category": "Kategoria",
+
 	"hero.section.update": "Aktualizuj SG",
+	"profile.hero.success": "Strona główna zaktualizowana",
 
 	"imageUpload.pickFromDisk": "Wybierz obraz z dysku",
 	"imageUpload.uploadToServer": "Dodaj obraz",

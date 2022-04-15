@@ -10,6 +10,7 @@ interface ImageLibraryProps {
 	setOpen: Dispatch<SetStateAction<boolean>>;
 	setImages: (images: Image[]) => void;
 	currentlySelectedImages: Image[];
+	multiple: boolean;
 }
 
 const ImageLibrary: FC<ImageLibraryProps> = ({
@@ -17,6 +18,7 @@ const ImageLibrary: FC<ImageLibraryProps> = ({
 	setOpen,
 	setImages,
 	currentlySelectedImages,
+	multiple,
 }) => {
 	return (
 		<Modal open={open} onClose={(_, reason) => setOpen(false)}>
@@ -49,6 +51,7 @@ const ImageLibrary: FC<ImageLibraryProps> = ({
 					<Box flexBasis="80%">
 						<ImagePickerForm
 							setImages={setImages}
+							multiple={multiple}
 							close={() => setOpen(false)}
 							currentlySelectedImages={currentlySelectedImages}
 						/>

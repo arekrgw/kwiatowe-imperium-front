@@ -46,9 +46,7 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = (
 
 	const [shortLocale] = router.locale ? router.locale.split("-") : ["en"];
 
-	useEffect(() => {
-		API.setAcceptLanguageHeader(shortLocale);
-	}, [shortLocale]);
+	API.setAcceptLanguageHeader(shortLocale);
 
 	const messages = useMemo(() => {
 		if (shortLocale === "en") return en;

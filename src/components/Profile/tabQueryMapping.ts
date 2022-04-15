@@ -7,7 +7,6 @@ export const tabQueryMapping = {
 export const TABS_MAPPING: ITab[] = [
 	{ label: "profile.tab.details", value: "details" },
 	{ label: "profile.tab.orders", value: "orders" },
-	{ label: "profile.tab.addresses", value: "addresses" },
 	{ label: "profile.tab.calendar", value: "calendar" },
 	{ label: "profile.tab.products", value: "products", adminOnly: true },
 	{ label: "profile.tab.categories", value: "categories", adminOnly: true },

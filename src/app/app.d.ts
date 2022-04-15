@@ -58,7 +58,7 @@ declare global {
 		title: string;
 		subtitle: string;
 		buttonText: string;
-		categoryId: string;
+		category: Pick<Category, "id">;
 	}
 
 	interface HeroEdit {
@@ -69,6 +69,7 @@ declare global {
 		buttonTextEn: string;
 		buttonTextPl: string;
 		image: Image | null;
+		category: Category;
 	}
 
 	interface CategoryWithProductsList extends Category {

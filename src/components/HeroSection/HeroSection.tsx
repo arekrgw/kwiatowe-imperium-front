@@ -53,7 +53,7 @@ const HeroSection = () => {
 						<ButtonLink
 							variant="outlined"
 							color="heroPrimary"
-							href={`/category/${data.categoryId}`}
+							href={`/category/${data.category.id}`}
 							size={isDesktop ? "large" : "medium"}
 							sx={{ mt: "50px" }}
 						>

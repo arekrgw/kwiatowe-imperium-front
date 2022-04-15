@@ -43,6 +43,17 @@ export const categoriesQuery: QueryDescriptor<MenuItemSingle[]> = () => [
 	},
 ];
 
+export const categoriesQueryAll: QueryDescriptor<Category[]> = () => [
+	"categoriesAll",
+	async () => {
+		const res = await API.getInstance().get<Category[]>(
+			apiRoutes.categoriesAll
+		);
+
+		return res.data;
+	},
+];
+
 export const categoryListingQuery: QueryDescriptor<
 	CategoryWithProductsList,
 	{ id: string }
@@ -88,7 +99,7 @@ export const heroSectionQuery: QueryDescriptor<Hero> = () => [
 export const heroEditQuery: QueryDescriptor<HeroEdit> = () => [
 	"heroEdit",
 	async () => {
-		const res = await API.getInstance().get<HeroEdit>(apiRoutes.hero);
+		const res = await API.getInstance().get<HeroEdit>(apiRoutes.heroFull);
 		return res.data;
 	},
 ];

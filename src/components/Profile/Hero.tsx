@@ -1,4 +1,6 @@
+import { API } from "@app/api";
 import apiRoutes from "@app/apiRoutes";
+import { categoriesQueryAll, heroEditQuery } from "@app/queries";
 import { useTimedSuccess } from "@app/utils/otherUtils";
 import PickImage from "@components/PickImage";
 import {
@@ -10,10 +12,13 @@ import {
 	Theme,
 	Grid,
 	useMediaQuery,
+	Autocomplete,
 } from "@mui/material";
-import { FC } from "react";
+import axios from "axios";
+import { FC, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { FormattedMessage } from "react-intl";
+import { useQuery, useQueryClient } from "react-query";
 import SectionWrapper from "./SectionWrapper";
 
 interface HeroProps {}
@@ -23,32 +28,46 @@ interface HeroData extends HeroEdit {
 }
 
 const Hero: FC<HeroProps> = () => {
+	const { data: heroEditData } = useQuery(...heroEditQuery());
+	const { data: allCategories } = useQuery(...categoriesQueryAll());
+
+	const queryClient = useQueryClient();
+
 	const {
 		handleSubmit,
 		clearErrors,
 		control,
+		reset,
+		setError,
 		formState: { errors },
 	} = useForm<HeroData>({
-		defaultValues: { image: null },
+		defaultValues: { ...heroEditData },
 	});
 
 	const { show, setShow } = useTimedSuccess();
 	const isDesktop = useMediaQuery<Theme>((theme) => theme.breakpoints.up("sm"));
 
+	useEffect(() => {
+		reset(heroEditData);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [heroEditData]);
+
 	const onHeroUpdate = async (formValues: HeroData) => {
 		try {
-			console.log(formValues);
-			// const { data: user } = await API.getInstance().patch<User>(
-			// 	apiRoutes.userProfile,
-			// 	formValues
-			// );
-			// queryClient.setQueryData(userProfile()[0], user);
-			// reset(user);
-			// setShow(true);
+			const payload = {
+				...formValues,
+				image: formValues.image?.id,
+				category: formValues.category.id,
+			};
+
+			await API.getInstance().patch<HeroEdit>(apiRoutes.updateHero, payload);
+
+			queryClient.invalidateQueries(heroEditQuery()[0]);
+			setShow(true);
 		} catch (err) {
-			// if (axios.isAxiosError(err)) {
-			// 	setError("submitError", { message: err.response?.data });
-			// }
+			if (axios.isAxiosError(err)) {
+				setError("submitError", { message: err.response?.data });
+			}
 		}
 	};
 
@@ -72,7 +91,7 @@ const Hero: FC<HeroProps> = () => {
 		>
 			{show && (
 				<Alert severity="success" sx={{ mt: "20px", mb: "20px" }}>
-					<FormattedMessage id="profile.details.success" />
+					<FormattedMessage id="profile.hero.success" />
 				</Alert>
 			)}
 			<form
@@ -83,26 +102,6 @@ const Hero: FC<HeroProps> = () => {
 			>
 				<Box sx={{ mt: "20px" }}>
 					<Grid container spacing="15px">
-						<Grid item xs={12} md={6}>
-							<Controller
-								control={control}
-								name="titleEn"
-								render={({ field }) => (
-									<TextField
-										variant="outlined"
-										fullWidth
-										error={!!errors[field.name]}
-										helperText={
-											errors[field.name] && (
-												<FormattedMessage id={errors[field.name]?.message} />
-											)
-										}
-										label={<FormattedMessage id="hero.titleEn" />}
-										{...field}
-									/>
-								)}
-							/>
-						</Grid>
 						<Grid item xs={12} md={6}>
 							<Controller
 								control={control}
@@ -118,6 +117,26 @@ const Hero: FC<HeroProps> = () => {
 											)
 										}
 										label={<FormattedMessage id="hero.titlePl" />}
+										{...field}
+									/>
+								)}
+							/>
+						</Grid>
+						<Grid item xs={12} md={6}>
+							<Controller
+								control={control}
+								name="titleEn"
+								render={({ field }) => (
+									<TextField
+										variant="outlined"
+										fullWidth
+										error={!!errors[field.name]}
+										helperText={
+											errors[field.name] && (
+												<FormattedMessage id={errors[field.name]?.message} />
+											)
+										}
+										label={<FormattedMessage id="hero.titleEn" />}
 										{...field}
 									/>
 								)}
@@ -168,7 +187,7 @@ const Hero: FC<HeroProps> = () => {
 						<Grid item xs={12} md={6}>
 							<Controller
 								control={control}
-								name="buttonTextEn"
+								name="buttonTextPl"
 								render={({ field }) => (
 									<TextField
 										variant="outlined"
@@ -179,7 +198,7 @@ const Hero: FC<HeroProps> = () => {
 												<FormattedMessage id={errors[field.name]?.message} />
 											)
 										}
-										label={<FormattedMessage id="hero.buttonTextEn" />}
+										label={<FormattedMessage id="hero.buttonTextPl" />}
 										{...field}
 									/>
 								)}
@@ -201,6 +220,37 @@ const Hero: FC<HeroProps> = () => {
 											)
 										}
 										label={<FormattedMessage id="hero.buttonTextEn" />}
+										{...field}
+									/>
+								)}
+							/>
+						</Grid>
+						<Grid item xs={12} md={12}>
+							<Controller
+								control={control}
+								name="category"
+								render={({ field }) => (
+									<Autocomplete
+										options={allCategories || []}
+										isOptionEqualToValue={(option, value) =>
+											option.id === value.id
+										}
+										getOptionLabel={(option) => option.name}
+										renderInput={(props) => (
+											<TextField
+												label={<FormattedMessage id="hero.category" />}
+												variant="outlined"
+												error={!!errors[field.name]}
+												helperText={
+													errors[field.name] && (
+														<FormattedMessage
+															id={errors[field.name]?.id?.message}
+														/>
+													)
+												}
+												{...props}
+											/>
+										)}
 										{...field}
 									/>
 								)}

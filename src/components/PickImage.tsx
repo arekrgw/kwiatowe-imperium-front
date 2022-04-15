@@ -52,7 +52,7 @@ const ImagePreview = ({
 };
 
 const PickImage = forwardRef<HTMLInputElement, PickImageProps>(
-	({ value, onChange, onBlur, name }) => {
+	({ value, onChange, onBlur, name }, ref) => {
 		const [open, setOpen] = useState(false);
 
 		const handleSelected = (imgs: Image[]) => {
@@ -69,6 +69,7 @@ const PickImage = forwardRef<HTMLInputElement, PickImageProps>(
 					open={open}
 					setOpen={setOpen}
 					setImages={handleSelected}
+					multiple={isArrayImage(value)}
 					currentlySelectedImages={
 						isArrayImage(value) ? value : value ? [value] : []
 					}

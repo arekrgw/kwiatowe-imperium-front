@@ -51,7 +51,6 @@
 	"profile.title": "Your profile details, {firstName}",
 	"profile.tab.details": "Details",
 	"profile.tab.orders": "Orders",
-	"profile.tab.addresses": "Addresses",
 	"profile.tab.calendar": "Calendar",
 	"profile.tab.products": "Products",
 	"profile.tab.categories": "Categories",
@@ -61,7 +60,6 @@
 	"profile.section.details": "Details",
 	"profile.section.changePassword": "Change password",
 	"profile.section.orders": "Orders",
-	"profile.section.addresses": "Addresses",
 	"profile.section.calendar": "Calendar",
 	"profile.section.hero": "Hero",
 
@@ -80,8 +78,10 @@
 	"hero.buttonTextPl": "Button text (polish)",
 	"hero.subtitleEn": "Subtitle (english)",
 	"hero.subtitlePl": "Subtitle (polish)",
+	"hero.category": "Cateogry",
 
 	"hero.section.update": "Update hero",
+	"profile.hero.success": "Hero updated successfully",
 
 	"imageUpload.pickFromDisk": "Pick image from disk",
 	"imageUpload.uploadToServer": "Upload image",

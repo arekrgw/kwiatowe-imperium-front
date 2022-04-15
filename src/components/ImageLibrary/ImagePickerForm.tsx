@@ -1,6 +1,6 @@
 import { allImagesQuery } from "@app/queries";
 import { Box, Button, Grid } from "@mui/material";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useQuery } from "react-query";
 import ImageCheckbox from "./ImageCheckbox";
@@ -10,11 +10,13 @@ interface ImagePickerFormProps {
 	setImages: (images: Image[]) => void;
 	close: () => void;
 	currentlySelectedImages: Image[];
+	multiple: boolean;
 }
 
 const ImagePickerForm: FC<ImagePickerFormProps> = ({
 	setImages,
 	close,
+	multiple,
 	currentlySelectedImages,
 }) => {
 	const { data } = useQuery(...allImagesQuery());
@@ -23,11 +25,19 @@ const ImagePickerForm: FC<ImagePickerFormProps> = ({
 		currentlySelectedImages.map(({ id }) => id)
 	);
 
+	useEffect(() => {
+		setSelectedImages(currentlySelectedImages.map(({ id }) => id));
+	}, [currentlySelectedImages]);
+
 	const onImageSelect = (imageId: string) => {
-		if (selectedImages.includes(imageId)) {
-			setSelectedImages(selectedImages.filter((id) => id !== imageId));
+		if (multiple) {
+			if (selectedImages.includes(imageId)) {
+				setSelectedImages(selectedImages.filter((id) => id !== imageId));
+			} else {
+				setSelectedImages([...selectedImages, imageId]);
+			}
 		} else {
-			setSelectedImages([...selectedImages, imageId]);
+			setSelectedImages([imageId]);
 		}
 	};
 

@@ -39,7 +39,9 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 	);
 
 	if (tab) {
-		const query = tabQueryMapping[tab.value as keyof typeof tabQueryMapping];
+		const query = tabQueryMapping[
+			tab.value as keyof typeof tabQueryMapping
+		] as QueryDescriptor<unknown, unknown>;
 		if (query) {
 			promises.push(queryClient.prefetchQuery(...query()));
 		}

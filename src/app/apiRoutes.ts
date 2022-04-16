@@ -7,6 +7,8 @@ const apiRoutes = {
 	categories: "/api/category/allVisible",
 	categoriesAll: "/api/category/all",
 	category: (id: string) => `/api/category/${id}`,
+	categoryDelete: (id: string) => `/api/category/${id}`,
+	categoryCreate: `/api/category`,
 	userProfile: "/auth/me",
 	passwordChange: "/auth/me/passwordChange",
 	hero: "/api/hero",

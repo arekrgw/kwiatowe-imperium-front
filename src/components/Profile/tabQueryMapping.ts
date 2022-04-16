@@ -1,8 +1,9 @@
-import { heroEditQuery } from "@app/queries";
+import { categoriesQueryAll, heroEditQuery } from "@app/queries";
 
 export const tabQueryMapping = {
 	hero: heroEditQuery,
-};
+	categories: categoriesQueryAll,
+} as const;
 
 export const TABS_MAPPING: ITab[] = [
 	{ label: "profile.tab.details", value: "details" },

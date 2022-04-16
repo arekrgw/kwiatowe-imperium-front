@@ -78,5 +78,18 @@
 	"imageUpload.pickFromDisk": "Wybierz obraz z dysku",
 	"imageUpload.uploadToServer": "Dodaj obraz",
 	"imagePicker.title": "Biblioteka obrazów",
-	"imagePicker.pickImages": "Wybierz zaznaczone obrazy"
+	"imagePicker.pickImages": "Wybierz zaznaczone obrazy",
+
+	"categories.section.title": "Lista kategorii",
+	"category.section.title.create": "Utwórz kategorię",
+	"category.section.title.update": "Edytuj kategorię",
+	"category.section.update": "Akutalizuj",
+	"category.section.create": "Utwórz",
+	"categories.namePl": "Nazwa (polish)",
+	"categories.nameEn": "Nazwa (english)",
+	"categories.visible": "Widoczna",
+
+	"deleteWarn.title": "Jesteś pewien/a że chcesz usunąć ten element?",
+	"deleteWarn.cancel": "Anuluj",
+	"deleteWarn.confirm": "Potwierdź"
 }

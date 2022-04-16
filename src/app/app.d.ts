@@ -72,6 +72,12 @@ declare global {
 		category: Category;
 	}
 
+	interface CategoryEdit {
+		namePl: string;
+		nameEn: string;
+		_visible: boolean;
+	}
+
 	interface CategoryWithProductsList extends Category {
 		products: Product[];
 	}

@@ -31,6 +31,7 @@
 	"signin.email": "E-mail",
 	"signin.password": "Hasło",
 	"signin.newPassword": "Nowe hasło",
+	"signin.oldPassword": "Obecne hasło",
 
 	"signin.btn-login": "Zaloguj się",
 	"signin.btn-register": "Zarejestruj się",
@@ -57,11 +58,15 @@
 	"profile.tab.users": "Użytkownicy",
 
 	"profile.section.details": "Szczegóły",
+	"profile.section.changePassword": "Zmień hasło",
 	"profile.section.orders": "Zamówienia",
 	"profile.section.calendar": "Kalendarz",
 	"profile.section.hero": "Strona główna",
 
 	"profile.details.update": "Aktualizuj profil",
+	"profile.details.changePassword": "Aktualizuj hasło",
+	"profile.details.success": "Profil został zaktualizowany",
+
 	"product.addToCart": "Do koszyka",
 
 	"hero.titlePl": "Tytuł (polski)",

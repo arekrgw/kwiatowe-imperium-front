@@ -7,7 +7,7 @@ const nextConfig = {
 		localeDetection: true,
 	},
 	images: {
-		domains: ["localhost"],
+		domains: ["localhost", "vps-8f870bb8.vps.ovh.net"],
 	},
 };
 

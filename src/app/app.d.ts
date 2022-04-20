@@ -30,6 +30,15 @@ declare global {
 		images: Image[];
 	}
 
+	interface ProductEdit {
+		namePl: string;
+		nameEn: string;
+		descriptionPl: string;
+		descriptionEn: string;
+		price: number;
+		images: Image[];
+	}
+
 	interface Category {
 		id: string;
 		name: string;

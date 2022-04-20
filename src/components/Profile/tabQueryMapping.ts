@@ -1,8 +1,13 @@
-import { categoriesQueryAll, heroEditQuery } from "@app/queries";
+import {
+	allProductsQuery,
+	categoriesQueryAll,
+	heroEditQuery,
+} from "@app/queries";
 
 export const tabQueryMapping = {
 	hero: heroEditQuery,
 	categories: categoriesQueryAll,
+	products: allProductsQuery,
 } as const;
 
 export const TABS_MAPPING: ITab[] = [

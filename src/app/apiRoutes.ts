@@ -3,6 +3,7 @@ const apiRoutes = {
 	register: "/auth/register",
 	homepageProducts: "/api/category/name/homepage",
 	product: (id: string) => `/api/product/${id}`,
+	productDelete: (id: string) => `/api/product/${id}`,
 	products: "/api/product/all",
 	categories: "/api/category/allVisible",
 	categoriesAll: "/api/category/all",

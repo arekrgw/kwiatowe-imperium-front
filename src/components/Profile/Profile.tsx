@@ -11,6 +11,7 @@ import ProfileNavigation from "./ProfileNavigation";
 import { TABS_MAPPING } from "./tabQueryMapping";
 import ProfileSkeleton from "./ProfileSkeleton";
 import { Categories } from "./Categories";
+import { Products } from "./Products";
 
 const Profile = () => {
 	const {
@@ -41,6 +42,7 @@ const Profile = () => {
 						{selectedTab === TABS_MAPPING[0].value && <Details />}
 						{selectedTab === TABS_MAPPING[1].value && <Orders />}
 						{selectedTab === TABS_MAPPING[2].value && <Calendar />}
+						{selectedTab === TABS_MAPPING[3].value && <Products />}
 						{selectedTab === TABS_MAPPING[4].value && <Categories />}
 						{selectedTab === TABS_MAPPING[5].value && <Hero />}
 						<Box minHeight="500vh"></Box>

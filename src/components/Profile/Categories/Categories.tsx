@@ -1,8 +1,8 @@
 import { categoriesQueryAll } from "@app/queries";
-import { Box, IconButton, Paper, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import { FC, useState } from "react";
 import { useQuery } from "react-query";
-import ListingSkeleton from "../ListingSkeleton";
+import { ListingSkeleton } from "@components/Profile";
 import CategoryListItem from "./CategoryListItem";
 import EditCreateCategoryModal from "./EditCreateCategoryModal";
 import AddIcon from "@mui/icons-material/Add";

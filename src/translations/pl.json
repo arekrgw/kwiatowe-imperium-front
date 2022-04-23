@@ -90,11 +90,23 @@
 	"category.section.title.update": "Edytuj kategorię",
 	"category.section.update": "Akutalizuj",
 	"category.section.create": "Utwórz",
-	"categories.namePl": "Nazwa (polish)",
-	"categories.nameEn": "Nazwa (english)",
+	"categories.namePl": "Nazwa (polski)",
+	"categories.nameEn": "Nazwa (angielski)",
 	"categories.visible": "Widoczna",
 
 	"deleteWarn.title": "Jesteś pewien/a że chcesz usunąć ten element?",
 	"deleteWarn.cancel": "Anuluj",
-	"deleteWarn.confirm": "Potwierdź"
+	"deleteWarn.confirm": "Potwierdź",
+
+	"products.section.title": "Lista produktów",
+	"product.section.title.update": "Edytuj produkt",
+	"product.section.title.create": "Utwórz produkt",
+	"product.section.update": "Aktualizuj",
+	"product.section.create": "Utwórz",
+	"products.namePl": "Nazwa (polski)",
+	"products.nameEn": "Nazwa (angielski)",
+	"products.price": "Cena",
+	"products.categories": "Kategorie",
+	"products.descriptionPl": "Opis (polski)",
+	"products.descriptionEn": "Opis (angielski)"
 }

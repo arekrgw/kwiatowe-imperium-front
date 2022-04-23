@@ -45,10 +45,11 @@ const Hero: FC<HeroProps> = () => {
 	});
 
 	const { show, setShow } = useTimedSuccess();
-	const isDesktop = useMediaQuery<Theme>((theme) => theme.breakpoints.up("sm"));
+	const isDesktop = useMediaQuery<Theme>((theme) => theme.breakpoints.up("md"));
 
 	useEffect(() => {
 		reset(heroEditData);
+		console.log("reset");
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [heroEditData]);
 
@@ -225,17 +226,18 @@ const Hero: FC<HeroProps> = () => {
 								)}
 							/>
 						</Grid>
-						<Grid item xs={12} md={12}>
+						<Grid item xs={12}>
 							<Controller
 								control={control}
 								name="category"
-								render={({ field }) => (
+								render={({ field: { onChange, ...field } }) => (
 									<Autocomplete
 										options={allCategories || []}
 										isOptionEqualToValue={(option, value) =>
 											option.id === value.id
 										}
 										getOptionLabel={(option) => option.name}
+										onChange={(event, value) => onChange(value)}
 										renderInput={(props) => (
 											<TextField
 												label={<FormattedMessage id="hero.category" />}

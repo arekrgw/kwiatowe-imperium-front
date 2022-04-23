@@ -99,5 +99,17 @@
 
 	"deleteWarn.title": "Are you sure you want to delete this item?",
 	"deleteWarn.cancel": "Cancel",
-	"deleteWarn.confirm": "Confirm"
+	"deleteWarn.confirm": "Confirm",
+
+	"products.section.title": "Products list",
+	"product.section.title.update": "Update product",
+	"product.section.title.create": "Create product",
+	"product.section.update": "Update",
+	"product.section.create": "Create",
+	"products.namePl": "Name (polish)",
+	"products.nameEn": "Name (english)",
+	"products.price": "Price",
+	"products.categories": "Categories",
+	"products.descriptionPl": "Description (polish)",
+	"products.descriptionEn": "Description (english)"
 }

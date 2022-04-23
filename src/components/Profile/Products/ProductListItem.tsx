@@ -61,10 +61,22 @@ const ProductListItem = ({ product }: ProductListItemProps) => {
 						objectFit="contain"
 					/>
 				</Box>
-				<Box flex="1 1 30%">{product.name}</Box>
+				<Box
+					sx={{
+						overflow: "hidden",
+						textOverflow: "ellipsis",
+						whiteSpace: "nowrap",
+						flex: { xs: "1 1 80%", md: "1 1 30%" },
+					}}
+				>
+					{product.name}
+				</Box>
+
 				<Box
 					flex="1 1 40%"
 					sx={{
+						flex: "1 1 40%",
+						display: { xs: "none", md: "block" },
 						overflow: "hidden",
 						textOverflow: "ellipsis",
 						whiteSpace: "nowrap",

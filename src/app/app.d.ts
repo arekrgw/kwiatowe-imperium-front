@@ -27,6 +27,7 @@ declare global {
 		name: string;
 		description: string;
 		price: number;
+		categories: Category[];
 		images: Image[];
 	}
 
@@ -37,6 +38,7 @@ declare global {
 		descriptionEn: string;
 		price: number;
 		images: Image[];
+		categories: Category[];
 	}
 
 	interface Category {

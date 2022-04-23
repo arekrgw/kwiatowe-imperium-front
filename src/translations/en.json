@@ -66,6 +66,9 @@
 	"profile.details.update": "Update profile",
 	"profile.details.changePassword": "Update password",
 	"profile.details.success": "Profile updated successfully",
+	"profile.details.address": "Address",
+	"profile.details.city": "City",
+	"profile.details.postalCode": "Postal Code",
 
 	"product.addToCart": "Add to cart",
 

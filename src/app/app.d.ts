@@ -61,6 +61,9 @@ declare global {
 		name: string;
 		surname: string;
 		roles: Role[];
+		address: string;
+		city: string;
+		postalCode: string;
 	}
 
 	interface Hero {

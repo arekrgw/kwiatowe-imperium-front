@@ -29,6 +29,9 @@ export interface ProfileData {
 	email: string;
 	password: string;
 	submitError: string;
+	address: string;
+	city: string;
+	postalCode: string;
 }
 
 const validationSchema = yup.object({
@@ -165,6 +168,69 @@ const ProfileEditForm: FC<ProfileEditFormProps> = () => {
 											)
 										}
 										label={<FormattedMessage id="signin.email" />}
+										{...field}
+									/>
+								)}
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<Controller
+								control={control}
+								name="address"
+								render={({ field }) => (
+									<TextField
+										variant="outlined"
+										fullWidth
+										autoComplete="address"
+										error={!!errors[field.name]}
+										helperText={
+											errors[field.name] && (
+												<FormattedMessage id={errors[field.name]?.message} />
+											)
+										}
+										label={<FormattedMessage id="profile.details.address" />}
+										{...field}
+									/>
+								)}
+							/>
+						</Grid>
+						<Grid item xs={12} md={6}>
+							<Controller
+								control={control}
+								name="postalCode"
+								render={({ field }) => (
+									<TextField
+										variant="outlined"
+										fullWidth
+										autoComplete="postal-code"
+										error={!!errors[field.name]}
+										helperText={
+											errors[field.name] && (
+												<FormattedMessage id={errors[field.name]?.message} />
+											)
+										}
+										label={<FormattedMessage id="profile.details.postalCode" />}
+										{...field}
+									/>
+								)}
+							/>
+						</Grid>
+						<Grid item xs={12} md={6}>
+							<Controller
+								control={control}
+								name="city"
+								render={({ field }) => (
+									<TextField
+										variant="outlined"
+										fullWidth
+										autoComplete="city"
+										error={!!errors[field.name]}
+										helperText={
+											errors[field.name] && (
+												<FormattedMessage id={errors[field.name]?.message} />
+											)
+										}
+										label={<FormattedMessage id="profile.details.city" />}
 										{...field}
 									/>
 								)}

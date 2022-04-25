@@ -3,11 +3,14 @@ import { FormattedMessage } from "react-intl";
 import Link from "next/link";
 import Image from "next/image";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { useCart } from "@app/utils/cartUtils";
 interface ProductProps {
 	product: Product;
 }
 
 const Product = ({ product }: ProductProps) => {
+	const { addToCart } = useCart();
+
 	const { images, name, price, id } = product;
 	return (
 		<Link href={`/product/${id}`} passHref>
@@ -82,6 +85,10 @@ const Product = ({ product }: ProductProps) => {
 					<Button
 						startIcon={<AddShoppingCartIcon />}
 						variant="contained"
+						onClick={(e) => {
+							e.stopPropagation();
+							addToCart(product.id, 1);
+						}}
 						sx={{ mt: "10px" }}
 					>
 						<FormattedMessage id="product.addToCart" />

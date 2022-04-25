@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { FC, useCallback, useEffect } from "react";
 import DesktopMenu from "./DesktopMenu";
 import Logo from "./Logo";
+import MobileCartButton from "./MobileCartButton";
 import MobileMenu from "./MobileMenu";
 import MobileMenuButton from "./MobileMenuButton";
 
@@ -42,6 +43,7 @@ const NavBar: FC<NavBarProps> = () => {
 		>
 			<Logo />
 			<MobileMenuButton />
+			<MobileCartButton />
 			<MobileMenu />
 			<DesktopMenu />
 		</Box>

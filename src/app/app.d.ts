@@ -101,4 +101,9 @@ declare global {
 		value: string;
 		adminOnly?: true;
 	}
+
+	interface Cart {
+		id: string;
+		products: Product[];
+	}
 }

@@ -1,5 +1,6 @@
 import menuConfiguration from "@app/menuConfiguration";
 import { Stack } from "@mui/material";
+import CartButton from "./CartButton";
 import DesktopMenuItem from "./DesktopMenuItem";
 import ProfileButton from "./ProfileButton";
 
@@ -19,6 +20,7 @@ const DesktopMenu = (props: DesktopMenuProps) => {
 				<DesktopMenuItem key={item.key} menuItem={item} />
 			))}
 			<ProfileButton />
+			<CartButton />
 		</Stack>
 	);
 };

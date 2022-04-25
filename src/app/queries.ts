@@ -111,3 +111,11 @@ export const allImagesQuery: QueryDescriptor<Image[]> = () => [
 		return res.data;
 	},
 ];
+
+export const cartQuery: QueryDescriptor<Cart> = () => [
+	"cart",
+	async () => {
+		const res = await API.getInstance().get<Cart>(apiRoutes.cart);
+		return res.data;
+	},
+];

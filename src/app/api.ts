@@ -1,7 +1,7 @@
 import { DefaultOptions, QueryClient } from "react-query";
 import axios, { AxiosInstance } from "axios";
 import { GetServerSidePropsContext } from "next";
-import { categoriesQuery, userProfile } from "./queries";
+import { cartQuery, categoriesQuery, userProfile } from "./queries";
 import { getJwt } from "./auth";
 
 export const getQueryClient = (defaultOptions?: DefaultOptions) => {
@@ -66,7 +66,10 @@ export const prepareApi = (ctx: GetServerSidePropsContext) => {
 
 	const user = client.fetchQuery(...userProfile());
 
-	const promises = [client.prefetchQuery(...categoriesQuery())];
+	const promises = [
+		client.prefetchQuery(...categoriesQuery()),
+		client.prefetchQuery(...cartQuery()),
+	];
 
 	const awaitAll = () => Promise.all([...promises, user]);
 

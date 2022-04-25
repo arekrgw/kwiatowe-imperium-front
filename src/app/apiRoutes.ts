@@ -17,6 +17,7 @@ const apiRoutes = {
 	updateHero: "api/hero",
 	allImages: "/api/image/all",
 	upload: "/api/image/db",
+	cart: "/api/cart",
 };
 
 export default apiRoutes;

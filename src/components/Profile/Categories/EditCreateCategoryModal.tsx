@@ -36,7 +36,7 @@ const EditCreateCategoryModal = ({
 	setOpen,
 	categoryId,
 }: EditCreateCategoryModalProps) => {
-	const isDesktop = useMediaQuery<Theme>((theme) => theme.breakpoints.up("sm"));
+	const isDesktop = useMediaQuery<Theme>((theme) => theme.breakpoints.up("md"));
 	const queryClient = useQueryClient();
 	const {
 		handleSubmit,

@@ -7,10 +7,10 @@ import apiRoutes from "./apiRoutes";
 export const homePageQuery: QueryDescriptor<Product[]> = () => [
 	"homepageList",
 	async () => {
-		const res = await API.getInstance().get<CategoryWithProductsList>(
+		const res = await API.getInstance().get<Pageable<Product>>(
 			apiRoutes.homepageProducts
 		);
-		return res.data.products;
+		return res.data.data;
 	},
 ];
 
@@ -26,10 +26,15 @@ export const productPageQuery: QueryDescriptor<Product, { id: string }> = (
 	},
 ];
 
-export const allProductsQuery: QueryDescriptor<Product[]> = () => [
-	"products",
-	async () => {
-		const res = await API.getInstance().get<Product[]>(apiRoutes.products);
+export const allProductsQuery: QueryDescriptor<
+	Pageable<Product>,
+	{ page: number }
+> = (params) => [
+	["products", params?.page],
+	async ({ queryKey }) => {
+		const res = await API.getInstance().get<Pageable<Product>>(
+			apiRoutes.products(queryKey[1] as number)
+		);
 		return res.data;
 	},
 ];
@@ -55,12 +60,24 @@ export const categoriesQueryAll: QueryDescriptor<Category[]> = () => [
 ];
 
 export const categoryListingQuery: QueryDescriptor<
-	CategoryWithProductsList,
-	{ id: string }
+	Pageable<Product>,
+	{ id: string; page: number }
 > = (params) => [
+	["categoryListing", params?.id, params?.page],
+	async ({ queryKey }) => {
+		const res = await API.getInstance().get<Pageable<Product>>(
+			apiRoutes.productByCategory(queryKey[1] as string, queryKey[2] as number)
+		);
+		return res.data;
+	},
+];
+
+export const categoryQuery: QueryDescriptor<Category, { id: string }> = (
+	params
+) => [
 	["category", params?.id],
 	async ({ queryKey }) => {
-		const res = await API.getInstance().get<CategoryWithProductsList>(
+		const res = await API.getInstance().get<Category>(
 			apiRoutes.category(queryKey[1] as string)
 		);
 		return res.data;

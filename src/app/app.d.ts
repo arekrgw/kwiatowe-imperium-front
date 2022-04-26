@@ -106,4 +106,9 @@ declare global {
 		id: string;
 		products: Product[];
 	}
+
+	interface Pageable<T> {
+		count: number;
+		data: T[];
+	}
 }

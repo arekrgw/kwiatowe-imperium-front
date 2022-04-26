@@ -7,6 +7,7 @@ import { prepareApi } from "@app/api";
 import { Profile } from "@components/Profile";
 import { isAvailable } from "@app/auth";
 import { TABS_MAPPING, tabQueryMapping } from "@components/Profile";
+import { allProductsQuery } from "@app/queries";
 
 interface HomeProps extends IDehydratedState {}
 
@@ -16,7 +17,16 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 	if (!ctx.query?.section) {
 		return {
 			redirect: {
-				destination: `${getPathLocale(ctx)}${ctx.resolvedUrl}?section=details`,
+				destination: `${getPathLocale(ctx)}/profile?section=details`,
+				permanent: false,
+			},
+		};
+	}
+
+	if (ctx.query?.section === "products" && !ctx.query?.page) {
+		return {
+			redirect: {
+				destination: `${getPathLocale(ctx)}/profile?section=products&page=1`,
 				permanent: false,
 			},
 		};
@@ -38,7 +48,13 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (
 		(t) => t.value === ctx.query?.section
 	);
 
-	if (tab) {
+	if (tab?.value === "products") {
+		const page = Number(ctx.query?.page);
+
+		promises.push(
+			queryClient.prefetchQuery(...allProductsQuery({ page: page - 1 }))
+		);
+	} else if (tab) {
 		const query = tabQueryMapping[
 			tab.value as keyof typeof tabQueryMapping
 		] as QueryDescriptor<unknown, unknown>;

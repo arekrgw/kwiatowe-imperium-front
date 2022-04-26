@@ -16,7 +16,6 @@ interface ExtendedMenuProps {
 
 const ExtendedMenuCategories = ({ item, isMobile }: ExtendedMenuProps) => {
 	const { data } = useQuery(...categoriesQuery());
-
 	const finalItems = useMemo(
 		() => [...item.extended, ...(data || [])],
 		[data, item.extended]

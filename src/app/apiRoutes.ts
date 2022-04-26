@@ -1,13 +1,17 @@
+export const PAGE_SIZE = 5;
+
 const apiRoutes = {
 	login: "/auth/authenticate",
 	register: "/auth/register",
-	homepageProducts: "/api/category/name/homepage",
+	homepageProducts: "/api/product/all?page=0&size=100&catName=homepage",
 	product: (id: string) => `/api/product/${id}`,
 	productDelete: (id: string) => `/api/product/${id}`,
-	products: "/api/product/all",
+	products: (page: number) => `/api/product/all?page=${page}&size=${PAGE_SIZE}`,
 	categories: "/api/category/allVisible",
 	categoriesAll: "/api/category/all",
 	category: (id: string) => `/api/category/${id}`,
+	productByCategory: (id: string, page: number) =>
+		`/api/product/all?cat=${id}&page=${page}&size=${PAGE_SIZE}`,
 	categoryDelete: (id: string) => `/api/category/${id}`,
 	categoryCreate: `/api/category`,
 	userProfile: "/auth/me",

@@ -1,13 +1,14 @@
 import { prepareApi } from "@app/api";
-import { categoryListingQuery } from "@app/queries";
+import { categoryListingQuery, categoryQuery } from "@app/queries";
+import { getPathLocale } from "@app/utils/otherUtils";
 import PageCenterWrapper from "@components/PageCenterWrapper";
+import Pagination from "@components/Pagination";
 import ProductsList from "@components/ProductsList/ProductsList";
 import { Box, Skeleton, Typography } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import { ParsedUrlQuery } from "querystring";
+import qs, { ParsedUrlQuery } from "querystring";
 import { FormattedMessage } from "react-intl";
 import { dehydrate, useQuery } from "react-query";
 
@@ -24,11 +25,23 @@ export const getServerSideProps: GetServerSideProps<
 	const { id } = ctx.params!;
 
 	if (!id) return { notFound: true };
+	if (!ctx.query.page) {
+		return {
+			redirect: {
+				destination: `${getPathLocale(ctx)}/category/${id}?page=1`,
+				permanent: false,
+			},
+		};
+	}
+	const page = Number(ctx.query.page);
 
-	const [queryClient, promises] = prepareApi(ctx);
-	promises.push(queryClient.prefetchQuery(...categoryListingQuery({ id })));
+	const [queryClient, promises, , awaitAll] = prepareApi(ctx);
+	promises.push(
+		queryClient.prefetchQuery(...categoryListingQuery({ id, page: page - 1 }))
+	);
+	promises.push(queryClient.prefetchQuery(...categoryQuery({ id })));
 
-	await Promise.all(promises);
+	await awaitAll();
 
 	return {
 		props: { dehydratedState: dehydrate(queryClient) },
@@ -38,19 +51,30 @@ export const getServerSideProps: GetServerSideProps<
 const CategoryListing = (
 	props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
-	const { query } = useRouter();
+	const { query, push } = useRouter();
 	const id = query.id as string;
-	const { data, isLoading } = useQuery(...categoryListingQuery({ id }));
+	const page = Number(query.page);
+
+	const { data, isLoading: isLoadingProducts } = useQuery(
+		...categoryListingQuery({ id, page: page - 1 })
+	);
+	const { data: cat, isLoading: isCategoryLoading } = useQuery(
+		...categoryQuery({ id })
+	);
+
+	const handlePageChange = (page: number) => {
+		push({ pathname: "/category/[id]", query: { page, id } });
+	};
 
 	return (
 		<PageCenterWrapper sx={{ mb: "50px" }}>
-			{isLoading || !data ? (
+			{isCategoryLoading || !cat ? (
 				<Skeleton width="70%" height="60px" />
 			) : (
 				<Typography variant="h4" component="h1">
 					<FormattedMessage
 						id="categoryListing"
-						values={{ categoryName: data?.name }}
+						values={{ categoryName: cat.name }}
 					/>
 				</Typography>
 			)}
@@ -62,8 +86,17 @@ const CategoryListing = (
 					},
 				})}
 			>
-				<ProductsList products={data?.products} isLoading={isLoading} />
+				<ProductsList products={data?.data} isLoading={isLoadingProducts} />
 			</Box>
+			{data && (
+				<Box display="flex" justifyContent="center" mt="30px">
+					<Pagination
+						count={data.count}
+						page={page}
+						onChange={handlePageChange}
+					/>
+				</Box>
+			)}
 		</PageCenterWrapper>
 	);
 };

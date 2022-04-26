@@ -117,5 +117,6 @@
 	"products.descriptionPl": "Opis (polski)",
 	"products.descriptionEn": "Opis (angielski)",
 
-	"cart.button": "Koszyk"
+	"cart.button": "Koszyk",
+	"server.error": "Coś poszło nie tak, spróbuj ponownie później"
 }

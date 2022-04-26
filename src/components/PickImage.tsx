@@ -4,7 +4,6 @@ import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 import { ImageLibrary } from "@components/ImageLibrary";
 import { Box } from "@mui/system";
 import Image from "next/image";
-
 interface PickImageProps {
 	value: Image | Image[] | null;
 	onChange: (img: Image | Image[] | null) => void;

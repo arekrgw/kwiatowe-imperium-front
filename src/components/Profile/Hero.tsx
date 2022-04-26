@@ -17,7 +17,7 @@ import {
 import axios from "axios";
 import { FC, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useQuery, useQueryClient } from "react-query";
 import SectionWrapper from "./SectionWrapper";
 
@@ -44,6 +44,8 @@ const Hero: FC<HeroProps> = () => {
 		defaultValues: { ...heroEditData },
 	});
 
+	const intl = useIntl();
+
 	const { show, setShow } = useTimedSuccess();
 	const isDesktop = useMediaQuery<Theme>((theme) => theme.breakpoints.up("md"));
 
@@ -66,7 +68,9 @@ const Hero: FC<HeroProps> = () => {
 			setShow(true);
 		} catch (err) {
 			if (axios.isAxiosError(err)) {
-				setError("submitError", { message: err.response?.data });
+				setError("submitError", {
+					message: intl.formatMessage({ id: "server.error" }),
+				});
 			}
 		}
 	};

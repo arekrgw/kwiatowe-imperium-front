@@ -29,7 +29,7 @@ const MobileCartButton = (props: MobileCartButtonProps) => {
 		>
 			<Link href="/cart" passHref>
 				<Fab variant="circular" color="secondary">
-					<Badge badgeContent={cart.products.length} color="primary">
+					<Badge badgeContent={cart.products?.length} color="primary">
 						<ShoppingCartIcon />
 					</Badge>
 				</Fab>

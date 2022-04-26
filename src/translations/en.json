@@ -44,6 +44,7 @@
 	"validation.email": "Not a valid e-mail",
 	"validation.notValidCredentials": "Email or password is invalid",
 	"validation.User already exist": "This email is already taken",
+	"validation.number": "This field must be a number",
 
 	"categoryListing": "Results for category: {categoryName}",
 	"categoryListingAll": "All available flowers",
@@ -114,5 +115,7 @@
 	"products.price": "Price",
 	"products.categories": "Categories",
 	"products.descriptionPl": "Description (polish)",
-	"products.descriptionEn": "Description (english)"
+	"products.descriptionEn": "Description (english)",
+
+	"cart.button": "Cart"
 }

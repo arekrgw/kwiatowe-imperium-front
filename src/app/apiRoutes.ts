@@ -21,7 +21,10 @@ const apiRoutes = {
 	updateHero: "api/hero",
 	allImages: "/api/image/all",
 	upload: "/api/image/db",
-	cart: "/api/cart",
+	cart: "/cart",
+	productFull: (id: string) => `/api/product/full/${id}`,
+	productCreate: "/api/product",
+	productUpdate: (id: string) => `/api/product/${id}`,
 };
 
 export default apiRoutes;

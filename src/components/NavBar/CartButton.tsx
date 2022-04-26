@@ -12,7 +12,7 @@ const CartButton = () => {
 	if (!cart) return null;
 
 	return (
-		<Badge badgeContent={cart.products.length} color="primary">
+		<Badge badgeContent={cart.products?.length} color="primary">
 			<ButtonLink
 				size="small"
 				color="secondary"

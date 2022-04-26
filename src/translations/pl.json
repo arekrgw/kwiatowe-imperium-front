@@ -43,6 +43,7 @@
 	"validation.min3": "Minimalnie 3 znaki wymagane",
 	"validation.email": "Niepoprawny e-mail",
 	"validation.notValidCredentials": "Email lub hasło jest nieprawidłowe",
+	"validation.number": "To pole musi być liczbą",
 	"validation.User already exist": "Ten adres e-mail jest już zajęty",
 
 	"categoryListing": "Wyniki dla kategorii: {categoryName}",
@@ -71,6 +72,9 @@
 	"profile.details.postalCode": "Kod pocztowy",
 
 	"product.addToCart": "Do koszyka",
+
+	"passwordChange.error.Wrong passwrod": "Obecne hasło nieprawidłowe",
+	"passwordChange.success": "Zmiana hasła udana",
 
 	"hero.titlePl": "Tytuł (polski)",
 	"hero.titleEn": "Tytuł (angielski)",
@@ -111,5 +115,7 @@
 	"products.price": "Cena",
 	"products.categories": "Kategorie",
 	"products.descriptionPl": "Opis (polski)",
-	"products.descriptionEn": "Opis (angielski)"
+	"products.descriptionEn": "Opis (angielski)",
+
+	"cart.button": "Koszyk"
 }

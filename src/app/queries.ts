@@ -136,3 +136,15 @@ export const cartQuery: QueryDescriptor<Cart> = () => [
 		return res.data;
 	},
 ];
+
+export const productQuery: QueryDescriptor<ProductEdit, { id: string }> = (
+	params
+) => [
+	["productEdit", params?.id],
+	async ({ queryKey }) => {
+		const res = await API.getInstance().get<ProductEdit>(
+			apiRoutes.productFull(queryKey[1] as string)
+		);
+		return res.data;
+	},
+];

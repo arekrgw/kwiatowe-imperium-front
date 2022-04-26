@@ -44,7 +44,7 @@ declare global {
 	interface Category {
 		id: string;
 		name: string;
-		_visible: boolean;
+		visible: boolean;
 	}
 
 	interface LoginResponse {
@@ -89,7 +89,7 @@ declare global {
 	interface CategoryEdit {
 		namePl: string;
 		nameEn: string;
-		_visible: boolean;
+		visible: boolean;
 	}
 
 	interface CategoryWithProductsList extends Category {

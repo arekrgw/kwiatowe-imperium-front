@@ -148,3 +148,16 @@ export const productQuery: QueryDescriptor<ProductEdit, { id: string }> = (
 		return res.data;
 	},
 ];
+
+export const categoryEditQuery: QueryDescriptor<
+	CategoryEdit,
+	{ id: string }
+> = (params) => [
+	["categoryEdit", params?.id],
+	async ({ queryKey }) => {
+		const res = await API.getInstance().get<CategoryEdit>(
+			apiRoutes.categoryFull(queryKey[1] as string)
+		);
+		return res.data;
+	},
+];

@@ -86,9 +86,15 @@ const CategoryListing = (
 					},
 				})}
 			>
-				<ProductsList products={data?.data} isLoading={isLoadingProducts} />
+				{data?.count === 0 ? (
+					<Typography variant="h5" component="h5" textAlign="center">
+						<FormattedMessage id="pagination.nodata" />
+					</Typography>
+				) : (
+					<ProductsList products={data?.data} isLoading={isLoadingProducts} />
+				)}
 			</Box>
-			{data && (
+			{!!data?.count && (
 				<Box display="flex" justifyContent="center" mt="30px">
 					<Pagination
 						count={data.count}

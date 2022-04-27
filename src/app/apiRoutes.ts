@@ -13,7 +13,6 @@ const apiRoutes = {
 	productByCategory: (id: string, page: number) =>
 		`/api/product/all?cat=${id}&page=${page}&size=${PAGE_SIZE}`,
 	categoryDelete: (id: string) => `/api/category/${id}`,
-	categoryCreate: `/api/category`,
 	userProfile: "/auth/me",
 	passwordChange: "/auth/me/passwordChange",
 	hero: "/api/hero",
@@ -25,6 +24,9 @@ const apiRoutes = {
 	productFull: (id: string) => `/api/product/full/${id}`,
 	productCreate: "/api/product",
 	productUpdate: (id: string) => `/api/product/${id}`,
+	categoryFull: (id: string) => `/api/category/full/${id}`,
+	categoryUpdate: (id: string) => `/api/category/${id}`,
+	categoryCreate: `/api/category`,
 };
 
 export default apiRoutes;

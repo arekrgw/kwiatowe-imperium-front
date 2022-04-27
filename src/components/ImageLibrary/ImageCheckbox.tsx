@@ -13,8 +13,9 @@ const ImageCheckbox: FC<ImageCheckboxProps> = ({ img, value, onChange }) => {
 		<Paper
 			sx={(theme) => ({
 				border: value
-					? `2px solid ${theme.palette.green[200]}`
-					: `2px solid ${theme.palette.grey[200]}`,
+					? `3px solid ${theme.palette.green[700]}`
+					: `3px solid ${theme.palette.grey[200]}`,
+				boxShadow: value ? 4 : 0,
 				cursor: "pointer",
 			})}
 			onClick={() => onChange(img.id)}

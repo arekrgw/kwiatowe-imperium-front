@@ -118,5 +118,6 @@
 	"products.descriptionEn": "Opis (angielski)",
 
 	"cart.button": "Koszyk",
-	"server.error": "Coś poszło nie tak, spróbuj ponownie później"
+	"server.error": "Coś poszło nie tak, spróbuj ponownie później",
+	"pagination.nodata": "Nie mamy nic do pokazania 🧐"
 }

@@ -117,5 +117,8 @@
 	"products.descriptionPl": "Description (polish)",
 	"products.descriptionEn": "Description (english)",
 
-	"cart.button": "Cart"
+	"cart.button": "Cart",
+	"server.error": "Something went wrong, please try again later",
+
+	"pagination.nodata": "Nothing to show 🧐"
 }

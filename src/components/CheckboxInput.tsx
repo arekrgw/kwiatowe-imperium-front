@@ -4,6 +4,7 @@ import {
 	FormControlLabel,
 	FormHelperText,
 } from "@mui/material";
+import { forwardRef } from "react";
 
 interface CheckboxInputProps {
 	helperText?: JSX.Element;
@@ -14,31 +15,29 @@ interface CheckboxInputProps {
 	label: JSX.Element;
 }
 
-const CheckboxInput = ({
-	helperText,
-	error,
-	value,
-	onChange,
-	onBlur,
-	label,
-}: CheckboxInputProps) => {
-	return (
-		<FormControl error={error}>
-			<FormControlLabel
-				control={
-					<Checkbox
-						checked={value}
-						onChange={(e, val) => {
-							onChange(val);
-							onBlur();
-						}}
-					/>
-				}
-				label={label}
-			/>
-			{helperText && <FormHelperText>{helperText}</FormHelperText>}
-		</FormControl>
-	);
-};
+const CheckboxInput = forwardRef<HTMLButtonElement, CheckboxInputProps>(
+	({ helperText, error, value, onChange, onBlur, label }, ref) => {
+		return (
+			<FormControl error={error}>
+				<FormControlLabel
+					control={
+						<Checkbox
+							ref={ref}
+							checked={value}
+							onChange={(e, val) => {
+								onChange(val);
+								onBlur();
+							}}
+						/>
+					}
+					label={label}
+				/>
+				{helperText && <FormHelperText>{helperText}</FormHelperText>}
+			</FormControl>
+		);
+	}
+);
+
+CheckboxInput.displayName = "CheckboxInput";
 
 export default CheckboxInput;

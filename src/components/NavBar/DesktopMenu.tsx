@@ -3,6 +3,7 @@ import { Stack } from "@mui/material";
 import CartButton from "./CartButton";
 import DesktopMenuItem from "./DesktopMenuItem";
 import ProfileButton from "./ProfileButton";
+import SearchButton from "./SearchButton";
 
 interface DesktopMenuProps {}
 
@@ -21,6 +22,7 @@ const DesktopMenu = (props: DesktopMenuProps) => {
 			))}
 			<ProfileButton />
 			<CartButton />
+			<SearchButton />
 		</Stack>
 	);
 };

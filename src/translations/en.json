@@ -120,5 +120,14 @@
 	"cart.button": "Cart",
 	"server.error": "Something went wrong, please try again later",
 
-	"pagination.nodata": "Nothing to show 🧐"
+	"pagination.nodata": "Nothing to show 🧐",
+	"yourCart": "Your cart ({count})",
+	"cart.empty": "Cart is empty...",
+	"cart.summary": "Summary",
+	"cart.total": "Total:",
+	"cart.checkout": "Proceed to checkout",
+	"cart.cantCheckout": "Login before continuing",
+	"cart.products": "Products",
+
+	"users.section.title": "Users"
 }

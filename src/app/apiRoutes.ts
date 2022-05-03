@@ -21,12 +21,15 @@ const apiRoutes = {
 	allImages: "/api/image/all",
 	upload: "/api/image/db",
 	cart: "/cart",
+	cartDelete: "/cart",
 	productFull: (id: string) => `/api/product/full/${id}`,
 	productCreate: "/api/product",
 	productUpdate: (id: string) => `/api/product/${id}`,
 	categoryFull: (id: string) => `/api/category/full/${id}`,
 	categoryUpdate: (id: string) => `/api/category/${id}`,
 	categoryCreate: `/api/category`,
+	usersDelete: (id: string) => `/api/user/${id}`,
+	allUsers: `/api/user/all`,
 };
 
 export default apiRoutes;

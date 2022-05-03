@@ -12,10 +12,11 @@ import type { NextComponentType } from "next";
 import type { AppContext, AppInitialProps, AppLayoutProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { IntlProvider } from "react-intl";
 import { Hydrate, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { CartContextProvider } from "@app/utils/cartUtils";
 
 import en from "@translations/en.json";
 import pl from "@translations/pl.json";
@@ -72,15 +73,17 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = (
 							hydrationData={hydrationData}
 							queryClient={queryClient}
 						>
-							<IntlProvider messages={messages} locale={shortLocale}>
-								{getLayout ? (
-									getLayout(<Component {...pageProps} />)
-								) : (
-									<Layout>
-										<Component {...pageProps} />
-									</Layout>
-								)}
-							</IntlProvider>
+							<CartContextProvider>
+								<IntlProvider messages={messages} locale={shortLocale}>
+									{getLayout ? (
+										getLayout(<Component {...pageProps} />)
+									) : (
+										<Layout>
+											<Component {...pageProps} />
+										</Layout>
+									)}
+								</IntlProvider>
+							</CartContextProvider>
 						</StoreProvider>
 						<ReactQueryDevtools />
 					</Hydrate>

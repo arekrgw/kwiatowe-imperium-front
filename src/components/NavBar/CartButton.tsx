@@ -9,20 +9,20 @@ import { useCart } from "@app/utils/cartUtils";
 const CartButton = () => {
 	const { cart } = useCart();
 
-	if (!cart) return null;
-
 	return (
-		<Badge badgeContent={cart.products?.length} color="primary">
+		<Badge badgeContent={cart.products.length} color="primary">
 			<ButtonLink
 				size="small"
 				color="secondary"
 				variant="contained"
-				sx={{ backgroundColor: "green.900" }}
+				sx={{
+					backgroundColor: "green.900",
+					minWidth: "unset",
+					"& .MuiButton-startIcon": { margin: 0 },
+				}}
 				href="/cart"
 				startIcon={<ShoppingCartIcon />}
-			>
-				<FormattedMessage id="cart.button" />
-			</ButtonLink>
+			/>
 		</Badge>
 	);
 };

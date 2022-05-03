@@ -1,5 +1,6 @@
 import {
 	allProductsQuery,
+	allUsers,
 	categoriesQueryAll,
 	heroEditQuery,
 } from "@app/queries";
@@ -8,6 +9,7 @@ export const tabQueryMapping = {
 	hero: heroEditQuery,
 	categories: categoriesQueryAll,
 	products: allProductsQuery,
+	users: allUsers,
 } as const;
 
 export const TABS_MAPPING: ITab[] = [

@@ -87,7 +87,7 @@ const Product = ({ product }: ProductProps) => {
 						variant="contained"
 						onClick={(e) => {
 							e.stopPropagation();
-							addToCart(product.id, 1);
+							addToCart(product, 1);
 						}}
 						sx={{ mt: "10px" }}
 					>

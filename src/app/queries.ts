@@ -88,9 +88,11 @@ export const userProfile: QueryDescriptor<User | null> = () => [
 	"userProfile",
 	async () => {
 		try {
-			const res = await API.getInstance().get<User>(apiRoutes.userProfile);
+			const {
+				data: { cart, ...profile },
+			} = await API.getInstance().get<any>(apiRoutes.userProfile);
 
-			return res.data;
+			return profile as User;
 		} catch (err) {
 			if (axios.isAxiosError(err)) {
 				if (
@@ -132,8 +134,12 @@ export const allImagesQuery: QueryDescriptor<Image[]> = () => [
 export const cartQuery: QueryDescriptor<Cart> = () => [
 	"cart",
 	async () => {
-		const res = await API.getInstance().get<Cart>(apiRoutes.cart);
-		return res.data;
+		try {
+			const res = await API.getInstance().get<ProductInCart[]>(apiRoutes.cart);
+			return { products: res.data };
+		} catch (err) {
+			return { products: [] };
+		}
 	},
 ];
 
@@ -159,5 +165,24 @@ export const categoryEditQuery: QueryDescriptor<
 			apiRoutes.categoryFull(queryKey[1] as string)
 		);
 		return res.data;
+	},
+];
+
+export const allUsers: QueryDescriptor<User[]> = () => [
+	"allUsers",
+	async () => {
+		return [
+			{
+				id: "12",
+				username: "username",
+				email: "test@mial.com",
+				name: "name",
+				surname: "surname",
+				roles: [{ id: "ds", name: "USER" }],
+				address: "adress",
+				city: "city",
+				postalCode: "postal",
+			},
+		];
 	},
 ];

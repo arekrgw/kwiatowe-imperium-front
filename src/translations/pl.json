@@ -119,5 +119,13 @@
 
 	"cart.button": "Koszyk",
 	"server.error": "Coś poszło nie tak, spróbuj ponownie później",
-	"pagination.nodata": "Nie mamy nic do pokazania 🧐"
+	"pagination.nodata": "Nie mamy nic do pokazania 🧐",
+	"yourCart": "Twój koszyk ({count})",
+	"cart.empty": "Koszyk jest pusty...",
+	"cart.summary": "Podsumowanie",
+	"cart.total": "Suma:",
+	"cart.checkout": "Kontynuuj do kasy",
+	"cart.cantCheckout": "Zaloguj się, aby kontynuować",
+	"cart.products": "Produkty",
+	"users.section.title": "Użytkownicy"
 }

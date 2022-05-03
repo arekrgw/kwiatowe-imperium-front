@@ -1,4 +1,4 @@
-import { userProfile } from "@app/queries";
+import { cartQuery, userProfile } from "@app/queries";
 import ButtonLink from "@components/ButtonLink";
 import { useQuery, useQueryClient } from "react-query";
 import PersonIcon from "@mui/icons-material/Person";
@@ -34,7 +34,8 @@ const ProfileButton = (props: ProfileButtonProps) => {
 		if (/\/profile.*/.test(router.pathname)) {
 			router.replace("/");
 		}
-		queryClient.invalidateQueries(userProfile()[0]);
+		queryClient.removeQueries(userProfile()[0]);
+		queryClient.removeQueries(cartQuery()[0]);
 	};
 
 	const href = user ? "/profile" : "/signin";

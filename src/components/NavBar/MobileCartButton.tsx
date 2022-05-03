@@ -15,8 +15,6 @@ interface MobileCartButtonProps {}
 const MobileCartButton = (props: MobileCartButtonProps) => {
 	const { cart } = useCart();
 
-	if (!cart) return null;
-
 	return (
 		<Box
 			sx={(theme) => ({
@@ -29,7 +27,7 @@ const MobileCartButton = (props: MobileCartButtonProps) => {
 		>
 			<Link href="/cart" passHref>
 				<Fab variant="circular" color="secondary">
-					<Badge badgeContent={cart.products?.length} color="primary">
+					<Badge badgeContent={cart.products.length} color="primary">
 						<ShoppingCartIcon />
 					</Badge>
 				</Fab>

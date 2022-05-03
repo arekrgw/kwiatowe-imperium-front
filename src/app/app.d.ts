@@ -56,6 +56,7 @@ declare global {
 		name: string;
 	}
 	interface User {
+		id: string;
 		username: string;
 		email: string;
 		name: string;
@@ -102,9 +103,13 @@ declare global {
 		adminOnly?: true;
 	}
 
+	interface ProductInCart {
+		product: Product;
+		quantity: number;
+	}
+
 	interface Cart {
-		id: string;
-		products: Product[];
+		products: ProductInCart[];
 	}
 
 	interface Pageable<T> {

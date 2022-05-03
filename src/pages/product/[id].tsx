@@ -26,10 +26,10 @@ export const getServerSideProps: GetServerSideProps<
 
 	if (!id) return { notFound: true };
 
-	const [queryClient, promises] = prepareApi(ctx);
+	const [queryClient, promises, , awaitAll] = prepareApi(ctx);
 	promises.push(queryClient.prefetchQuery(...productPageQuery({ id })));
 
-	await Promise.all(promises);
+	await awaitAll();
 
 	return {
 		props: { dehydratedState: dehydrate(queryClient) },

@@ -130,5 +130,6 @@
 	"cart.cantCheckout": "Login before continuing",
 	"cart.products": "Products",
 
-	"users.section.title": "Users"
+	"users.section.title": "Users",
+	"productSearch.title": "Your search results ({searchTerm}):"
 }

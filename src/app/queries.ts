@@ -186,3 +186,16 @@ export const allUsers: QueryDescriptor<User[]> = () => [
 		];
 	},
 ];
+
+export const productsSearchQuery: QueryDescriptor<
+	Pageable<Product>,
+	{ q: string; page: number }
+> = (params) => [
+	["productSearch", params?.q, params?.page],
+	async ({ queryKey }) => {
+		const res = await API.getInstance().get<Pageable<Product>>(
+			apiRoutes.productsSearch(queryKey[2] as number, queryKey[1] as string)
+		);
+		return res.data;
+	},
+];

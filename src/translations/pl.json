@@ -127,5 +127,7 @@
 	"cart.checkout": "Kontynuuj do kasy",
 	"cart.cantCheckout": "Zaloguj się, aby kontynuować",
 	"cart.products": "Produkty",
-	"users.section.title": "Użytkownicy"
+	"users.section.title": "Użytkownicy",
+	"productSearch.title": "Wyniki wyszukiwania ({searchTerm}):"
+
 }

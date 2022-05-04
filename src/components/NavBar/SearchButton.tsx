@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { useStore } from "@stores";
 import { observer } from "mobx-react-lite";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { sharedSx } from "./MobileNavigationListItem";
@@ -20,6 +21,7 @@ import { sharedSx } from "./MobileNavigationListItem";
 const SearchButton = () => {
 	const isDesktop = useMediaQuery<Theme>((theme) => theme.breakpoints.up("sm"));
 	const { mainStore } = useStore();
+	const router = useRouter();
 	const [open, setOpen] = useState(false);
 
 	const handleOpenSearch = (state: boolean, closeMenu = false) => {
@@ -31,7 +33,7 @@ const SearchButton = () => {
 
 	const handleSearch = (search: string) => {
 		handleOpenSearch(false, true);
-		console.log(search);
+		router.push({ pathname: "/product/search", query: { q: search } });
 	};
 	return (
 		<>

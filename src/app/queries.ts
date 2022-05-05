@@ -171,19 +171,8 @@ export const categoryEditQuery: QueryDescriptor<
 export const allUsers: QueryDescriptor<User[]> = () => [
 	"allUsers",
 	async () => {
-		return [
-			{
-				id: "12",
-				username: "username",
-				email: "test@mial.com",
-				name: "name",
-				surname: "surname",
-				roles: [{ id: "ds", name: "USER" }],
-				address: "adress",
-				city: "city",
-				postalCode: "postal",
-			},
-		];
+		const res = await API.getInstance().get<User[]>(apiRoutes.allUsers);
+		return res.data;
 	},
 ];
 

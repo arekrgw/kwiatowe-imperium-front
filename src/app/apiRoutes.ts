@@ -30,8 +30,8 @@ const apiRoutes = {
 	categoryFull: (id: string) => `/api/category/full/${id}`,
 	categoryUpdate: (id: string) => `/api/category/${id}`,
 	categoryCreate: `/api/category`,
-	usersDelete: (id: string) => `/api/user/${id}`,
-	allUsers: `/api/user/all`,
+	usersDelete: (id: string) => `/users/${id}`,
+	allUsers: `/users/all`,
 };
 
 export default apiRoutes;

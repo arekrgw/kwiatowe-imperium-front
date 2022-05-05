@@ -6,6 +6,7 @@
 	"menu.categories": "Kategorie",
 	"menu.fulloffer": "Pełna oferta",
 	"menu.logout": "Wyloguj się",
+	"menu.search": "Szukaj",
 
 	"meta.description": "Kwiatowe Imperium, sklep z kwiatami na każdą okazję.",
 
@@ -129,5 +130,4 @@
 	"cart.products": "Produkty",
 	"users.section.title": "Użytkownicy",
 	"productSearch.title": "Wyniki wyszukiwania ({searchTerm}):"
-
 }

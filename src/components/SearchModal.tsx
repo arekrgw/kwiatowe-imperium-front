@@ -1,6 +1,7 @@
-import { Box, Input, InputAdornment, Paper } from "@mui/material";
+import { Box, Input, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { Controller, useForm } from "react-hook-form";
+import { useIntl } from "react-intl";
 
 interface SearchModalProps {
 	onSearch: (search: string) => void;
@@ -15,9 +16,12 @@ const SearchModal = ({ onSearch }: SearchModalProps) => {
 		defaultValues: { search: "" },
 	});
 
+	const intl = useIntl();
+
 	const handleSearch = (values: SearchForm) => {
 		onSearch(values.search);
 	};
+
 	return (
 		<form onSubmit={handleSubmit(handleSearch)}>
 			<Box
@@ -50,7 +54,7 @@ const SearchModal = ({ onSearch }: SearchModalProps) => {
 									<SearchIcon />
 								</InputAdornment>
 							}
-							placeholder="Search"
+							placeholder={intl.formatMessage({ id: "menu.search" })}
 							{...field}
 						/>
 					)}

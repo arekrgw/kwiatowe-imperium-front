@@ -7,8 +7,8 @@ const apiRoutes = {
 	product: (id: string) => `/api/product/${id}`,
 	productDelete: (id: string) => `/api/product/${id}`,
 	products: (page: number) => `/api/product/all?page=${page}&size=${PAGE_SIZE}`,
-	productsSearch: (page: number, q: string) => `/api/product/all`,
-	// `/api/product/all?page=${page}&size=${PAGE_SIZE}&q=${q}`,
+	productsSearch: (page: number, q: string) =>
+		`/api/product/all?page=${page}&size=${PAGE_SIZE}&q=${q}`,
 	categories: "/api/category/allVisible",
 	categoriesAll: "/api/category/all",
 	category: (id: string) => `/api/category/${id}`,

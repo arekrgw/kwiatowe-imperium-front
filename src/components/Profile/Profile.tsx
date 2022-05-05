@@ -26,7 +26,7 @@ const Profile = () => {
 	if (!data) return <ProfileSkeleton />;
 
 	return (
-		<>
+		<Box sx={{ mb: "50px" }}>
 			<Typography variant="h4" component="h1">
 				<FormattedMessage
 					id="profile.title"
@@ -47,11 +47,10 @@ const Profile = () => {
 						{selectedTab === TABS_MAPPING[4].value && <Categories />}
 						{selectedTab === TABS_MAPPING[5].value && <Hero />}
 						{selectedTab === TABS_MAPPING[6].value && <Users />}
-						<Box minHeight="500vh"></Box>
 					</Grid>
 				</Grid>
 			</Box>
-		</>
+		</Box>
 	);
 };
 

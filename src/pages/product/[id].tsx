@@ -1,7 +1,8 @@
 import { prepareApi } from "@app/api";
 import { productPageQuery } from "@app/queries";
 import PageCenterWrapper from "@components/PageCenterWrapper";
-import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
+import { Box, Button, Grid, Paper, Stack, Typography } from "@mui/material";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { GetServerSideProps, NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -12,6 +13,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { FormattedMessage } from "react-intl";
+import { useCart } from "@app/utils/cartUtils";
 interface ProductPageProps extends IDehydratedState {}
 
 interface Params extends ParsedUrlQuery {
@@ -41,6 +44,7 @@ const ProductPage: NextPage<ProductPageProps> = (props) => {
 	const { data: product, isLoading } = useQuery(
 		...productPageQuery({ id: query.id as string })
 	);
+	const { addToCart } = useCart();
 
 	if (!product || isLoading) return null;
 
@@ -128,6 +132,30 @@ const ProductPage: NextPage<ProductPageProps> = (props) => {
 								{product.name}
 							</Typography>
 							<Typography sx={{ mt: "20px" }}>{product.description}</Typography>
+							<Box display="flex" alignItems="center" mt="20px">
+								<Typography>
+									<FormattedMessage id="price" />:
+								</Typography>
+								<Typography
+									sx={{ ml: "5px" }}
+									variant="h6"
+									fontWeight="fontWeightMedium"
+									color="secondary.main"
+								>
+									{product.price.toFixed(2)} PLN
+								</Typography>
+							</Box>
+							<Button
+								startIcon={<AddShoppingCartIcon />}
+								variant="contained"
+								onClick={(e) => {
+									e.stopPropagation();
+									addToCart(product, 1);
+								}}
+								sx={{ mt: "10px", alignSelf: "flex-start" }}
+							>
+								<FormattedMessage id="product.addToCart" />
+							</Button>
 						</Stack>
 					</Paper>
 				</Grid>

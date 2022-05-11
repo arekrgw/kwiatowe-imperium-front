@@ -34,7 +34,7 @@ const ProfileButton = (props: ProfileButtonProps) => {
 		if (/\/profile.*/.test(router.pathname)) {
 			router.replace("/");
 		}
-		queryClient.removeQueries(userProfile()[0]);
+		queryClient.setQueryData(userProfile()[0], null);
 		queryClient.removeQueries(cartQuery()[0]);
 	};
 

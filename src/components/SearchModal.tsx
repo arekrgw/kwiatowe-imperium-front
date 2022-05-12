@@ -47,6 +47,7 @@ const SearchModal = ({ onSearch }: SearchModalProps) => {
 								boxSizing: "border-box",
 								borderRadius: "4px",
 							}}
+							autoFocus
 							fullWidth
 							disableUnderline
 							startAdornment={

@@ -1,9 +1,8 @@
 import { Box, IconButton } from "@mui/material";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
-import apiRoutes from "@app/apiRoutes";
-import { API } from "@app/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useCart } from "@app/utils/cartUtils";
 
 interface CartItemProps {
 	productInCart: ProductInCart;
@@ -11,14 +10,18 @@ interface CartItemProps {
 
 const CartItem = ({ productInCart: { product, quantity } }: CartItemProps) => {
 	const [deleting, setDeleting] = useState(false);
-	const removeFromCart = (id: string) => {
+	const [mounted, setMounted] = useState(false);
+	const { deleteItemFromCart } = useCart();
+	const removeFromCart = async (id: string) => {
 		setDeleting(true);
-		try {
-		} catch (err) {
-		} finally {
-			setDeleting(false);
-		}
+		await deleteItemFromCart(id);
+		if (mounted) setDeleting(false);
 	};
+
+	useEffect(() => {
+		setMounted(true);
+		return () => setMounted(false);
+	}, []);
 
 	return (
 		<Box

@@ -29,6 +29,7 @@ const getLocalCart: () => Cart = () => {
 type CartContext = {
 	cart: Cart;
 	addToCart: (product: Product, qty: number) => Promise<void>;
+	deleteItemFromCart: (id: string) => Promise<void>;
 };
 
 const defaultCart: Cart = { products: [] };
@@ -65,21 +66,48 @@ export const CartContextProvider = ({
 
 					if (!noInvalidation) {
 						queryClient.invalidateQueries(cartQuery()[0]);
-						console.log("invalidated");
 					}
 				} catch (err) {
 					console.debug(err);
 				}
 			} else {
-				const cartObj: ProductInCart[] = [
-					...(localCart?.products || []),
-					{ product, quantity: qty },
-				];
-				localStorage.setItem(CART_KEY, JSON.stringify(cartObj));
+				let tempCart = [...(localCart?.products || [])];
+
+				const existingProduct = localCart?.products.find(
+					(item) => item.product.id === product.id
+				);
+
+				if (existingProduct) {
+					existingProduct.quantity += qty;
+				} else {
+					tempCart = [...tempCart, { product, quantity: qty }];
+				}
+				localStorage.setItem(CART_KEY, JSON.stringify(tempCart));
 				queryClient.invalidateQueries("localCart");
 			}
 		},
 		[queryClient, user, localCart]
+	);
+
+	const deleteItemFromCart = useCallback(
+		async (id: string) => {
+			if (user) {
+				try {
+					await API.getInstance().delete(apiRoutes.cartDelete(id));
+
+					queryClient.invalidateQueries(cartQuery()[0]);
+				} catch (err) {
+					console.debug(err);
+				}
+			} else {
+				const cartObj = (localCart?.products || []).filter(
+					(item) => item.product.id !== id
+				);
+				localStorage.setItem(CART_KEY, JSON.stringify(cartObj));
+				queryClient.invalidateQueries("localCart");
+			}
+		},
+		[user, queryClient, localCart]
 	);
 
 	const moveLocalCartToUser = async () => {
@@ -118,7 +146,6 @@ export const CartContextProvider = ({
 			// FIXME:
 			validProducts = validProducts.filter((p) => p);
 			// FIXME!
-			console.log(validProducts, res);
 			const validCart = validProducts.map((vP) => ({
 				product: vP,
 				quantity: localCart.products.find((p) => p.product.id === vP.id)!
@@ -142,6 +169,7 @@ export const CartContextProvider = ({
 			value={{
 				cart: (!!isLocalCart ? localCart : cart) || defaultCart,
 				addToCart,
+				deleteItemFromCart,
 			}}
 		>
 			{children}

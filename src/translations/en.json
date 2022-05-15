@@ -126,9 +126,12 @@
 	"cart.empty": "Cart is empty...",
 	"cart.summary": "Summary",
 	"cart.total": "Total:",
-	"cart.checkout": "Proceed to checkout",
+	"cart.checkout": "Buy!",
 	"cart.cantCheckout": "Login before continuing",
+	"cart.cantCheckoutAddr": "Fill your address in profile first",
+	"cart.shipment": "Shipment",
 	"cart.products": "Products",
+	"cart.success": "Order placed successfully",
 
 	"users.section.title": "Users",
 	"productSearch.title": "Your search results ({searchTerm}):"

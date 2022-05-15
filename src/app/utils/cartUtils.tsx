@@ -30,6 +30,7 @@ type CartContext = {
 	cart: Cart;
 	addToCart: (product: Product, qty: number) => Promise<void>;
 	deleteItemFromCart: (id: string) => Promise<void>;
+	finalizeCart: () => Promise<boolean>;
 };
 
 const defaultCart: Cart = { products: [] };
@@ -157,6 +158,18 @@ export const CartContextProvider = ({
 		}
 	};
 
+	const finalizeCart = useCallback(async () => {
+		if (!user) return false;
+
+		try {
+			await API.getInstance().post(apiRoutes.cartFinalize);
+			queryClient.invalidateQueries(cartQuery()[0]);
+			return true;
+		} catch (err) {
+			return false;
+		}
+	}, []);
+
 	useEffect(() => {
 		if (!isLoadingLocalCart && !initialized) {
 			setInitialized(true);
@@ -170,6 +183,7 @@ export const CartContextProvider = ({
 				cart: (!!isLocalCart ? localCart : cart) || defaultCart,
 				addToCart,
 				deleteItemFromCart,
+				finalizeCart,
 			}}
 		>
 			{children}

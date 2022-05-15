@@ -125,9 +125,12 @@
 	"cart.empty": "Koszyk jest pusty...",
 	"cart.summary": "Podsumowanie",
 	"cart.total": "Suma:",
-	"cart.checkout": "Kontynuuj do kasy",
+	"cart.checkout": "Kup!",
 	"cart.cantCheckout": "Zaloguj się, aby kontynuować",
+	"cart.cantCheckoutAddr": "Uzupełnij najpierw adress",
 	"cart.products": "Produkty",
+	"cart.shipment": "Dostawa",
+	"cart.success": "Zamówienie zostało złożone",
 	"users.section.title": "Użytkownicy",
 	"productSearch.title": "Wyniki wyszukiwania ({searchTerm}):"
 }

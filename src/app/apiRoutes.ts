@@ -23,6 +23,7 @@ const apiRoutes = {
 	allImages: "/api/image/all",
 	upload: "/api/image/db",
 	cart: "/cart",
+	cartFinalize: "/cart/buy",
 	cartDelete: (id: string) => `/cart/${id}`,
 	productFull: (id: string) => `/api/product/full/${id}`,
 	productCreate: "/api/product",

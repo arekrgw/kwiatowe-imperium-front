@@ -132,5 +132,8 @@
 	"cart.shipment": "Dostawa",
 	"cart.success": "Zamówienie zostało złożone",
 	"users.section.title": "Użytkownicy",
-	"productSearch.title": "Wyniki wyszukiwania ({searchTerm}):"
+	"productSearch.title": "Wyniki wyszukiwania ({searchTerm}):",
+	"orders.order": "Zamówienie",
+	"orders.orders": "Zamówienia",
+	"orders.finalize": "Zakończ"
 }

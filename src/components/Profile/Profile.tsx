@@ -6,7 +6,7 @@ import { useQuery } from "react-query";
 import Calendar from "./Calendar";
 import Details from "./Details";
 import Hero from "./Hero";
-import Orders from "./Orders";
+import { Orders } from "./Orders";
 import ProfileNavigation from "./ProfileNavigation";
 import { TABS_MAPPING } from "./tabQueryMapping";
 import ProfileSkeleton from "./ProfileSkeleton";

@@ -134,5 +134,8 @@
 	"cart.success": "Order placed successfully",
 
 	"users.section.title": "Users",
-	"productSearch.title": "Your search results ({searchTerm}):"
+	"productSearch.title": "Your search results ({searchTerm}):",
+	"orders.order": "Order",
+	"orders.orders": "Orders",
+	"orders.finalize": "Finalize order"
 }

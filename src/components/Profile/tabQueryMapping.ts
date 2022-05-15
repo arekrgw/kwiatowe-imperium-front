@@ -3,6 +3,7 @@ import {
 	allUsers,
 	categoriesQueryAll,
 	heroEditQuery,
+	ordersQuery,
 } from "@app/queries";
 
 export const tabQueryMapping = {
@@ -10,11 +11,12 @@ export const tabQueryMapping = {
 	categories: categoriesQueryAll,
 	products: allProductsQuery,
 	users: allUsers,
+	orders: ordersQuery,
 } as const;
 
 export const TABS_MAPPING: ITab[] = [
 	{ label: "profile.tab.details", value: "details" },
-	{ label: "profile.tab.orders", value: "orders" },
+	{ label: "profile.tab.orders", value: "orders", adminOnly: true },
 	{ label: "profile.tab.calendar", value: "calendar" },
 	{ label: "profile.tab.products", value: "products", adminOnly: true },
 	{ label: "profile.tab.categories", value: "categories", adminOnly: true },

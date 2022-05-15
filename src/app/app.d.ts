@@ -112,6 +112,12 @@ declare global {
 		products: ProductInCart[];
 	}
 
+	interface Order {
+		products: ProductInCart[];
+		id: string;
+		ordered: boolean;
+	}
+
 	interface Pageable<T> {
 		count: number;
 		data: T[];

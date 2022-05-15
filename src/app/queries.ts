@@ -188,3 +188,11 @@ export const productsSearchQuery: QueryDescriptor<
 		return res.data;
 	},
 ];
+
+export const ordersQuery: QueryDescriptor<Order[]> = (params) => [
+	["ordersQuery"],
+	async () => {
+		const res = await API.getInstance().get<Order[]>(apiRoutes.orders);
+		return res.data;
+	},
+];

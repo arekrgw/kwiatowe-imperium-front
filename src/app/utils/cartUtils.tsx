@@ -168,7 +168,7 @@ export const CartContextProvider = ({
 		} catch (err) {
 			return false;
 		}
-	}, []);
+	}, [user]);
 
 	useEffect(() => {
 		if (!isLoadingLocalCart && !initialized) {

@@ -1,6 +1,7 @@
 import {
 	allProductsQuery,
 	allUsers,
+	calendarQueryAll,
 	categoriesQueryAll,
 	heroEditQuery,
 	ordersQuery,
@@ -12,6 +13,7 @@ export const tabQueryMapping = {
 	products: allProductsQuery,
 	users: allUsers,
 	orders: ordersQuery,
+	calendar: calendarQueryAll,
 } as const;
 
 export const TABS_MAPPING: ITab[] = [

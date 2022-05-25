@@ -17,6 +17,8 @@ import { IntlProvider } from "react-intl";
 import { Hydrate, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { CartContextProvider } from "@app/utils/cartUtils";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 import en from "@translations/en.json";
 import pl from "@translations/pl.json";
@@ -73,17 +75,19 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = (
 							hydrationData={hydrationData}
 							queryClient={queryClient}
 						>
-							<CartContextProvider>
-								<IntlProvider messages={messages} locale={shortLocale}>
-									{getLayout ? (
-										getLayout(<Component {...pageProps} />)
-									) : (
-										<Layout>
-											<Component {...pageProps} />
-										</Layout>
-									)}
-								</IntlProvider>
-							</CartContextProvider>
+							<LocalizationProvider dateAdapter={AdapterDateFns}>
+								<CartContextProvider>
+									<IntlProvider messages={messages} locale={shortLocale}>
+										{getLayout ? (
+											getLayout(<Component {...pageProps} />)
+										) : (
+											<Layout>
+												<Component {...pageProps} />
+											</Layout>
+										)}
+									</IntlProvider>
+								</CartContextProvider>
+							</LocalizationProvider>
 						</StoreProvider>
 						<ReactQueryDevtools />
 					</Hydrate>

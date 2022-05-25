@@ -135,5 +135,12 @@
 	"productSearch.title": "Wyniki wyszukiwania ({searchTerm}):",
 	"orders.order": "Zamówienie",
 	"orders.orders": "Zamówienia",
-	"orders.finalize": "Zakończ"
+	"orders.finalize": "Zakończ",
+
+	"calendar.section.title": "Kalendarz przypomnień",
+	"calendar.section.title.create": "Utwórz przypomnienie",
+	"calendar.subject": "Temat",
+	"calendar.body": "Treść",
+	"calendar.date": "Data",
+	"calendar.section.create": "Utwórz"
 }

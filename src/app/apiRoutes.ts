@@ -35,6 +35,9 @@ const apiRoutes = {
 	allUsers: `/users/all`,
 	orders: `/api/cart`,
 	orderFinalizeAdmin: (id: string) => `/api/cart/${id}`,
+	calendarAll: "/auth/me/mail",
+	dateDelete: (id: string) => `/auth/me/mail/${id}`,
+	dateCreate: `/auth/me/mail`,
 };
 
 export default apiRoutes;

@@ -3,7 +3,7 @@ import { Typography, Box, Grid } from "@mui/material";
 import { useRouter } from "next/router";
 import { FormattedMessage } from "react-intl";
 import { useQuery } from "react-query";
-import Calendar from "./Calendar";
+import { Dates } from "./Calendar";
 import Details from "./Details";
 import Hero from "./Hero";
 import { Orders } from "./Orders";
@@ -42,7 +42,7 @@ const Profile = () => {
 					<Grid item xs={12} md={9}>
 						{selectedTab === TABS_MAPPING[0].value && <Details />}
 						{selectedTab === TABS_MAPPING[1].value && <Orders />}
-						{selectedTab === TABS_MAPPING[2].value && <Calendar />}
+						{selectedTab === TABS_MAPPING[2].value && <Dates />}
 						{selectedTab === TABS_MAPPING[3].value && <Products />}
 						{selectedTab === TABS_MAPPING[4].value && <Categories />}
 						{selectedTab === TABS_MAPPING[5].value && <Hero />}

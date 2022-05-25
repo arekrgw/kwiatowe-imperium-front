@@ -137,5 +137,12 @@
 	"productSearch.title": "Your search results ({searchTerm}):",
 	"orders.order": "Order",
 	"orders.orders": "Orders",
-	"orders.finalize": "Finalize order"
+	"orders.finalize": "Finalize order",
+
+	"calendar.section.title": "Reminder calendar",
+	"calendar.section.title.create": "Create reminder",
+	"calendar.subject": "Subject",
+	"calendar.body": "Body",
+	"calendar.date": "Date",
+	"calendar.section.create": "Create"
 }

@@ -122,4 +122,16 @@ declare global {
 		count: number;
 		data: T[];
 	}
+
+	interface CalDate {
+		id: string;
+		date: number;
+		subject: string;
+		body: string;
+	}
+	interface CalDateEdit {
+		date: Date;
+		subject: string;
+		body: string;
+	}
 }

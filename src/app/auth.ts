@@ -1,3 +1,4 @@
+import { addHours } from "date-fns";
 import Cookies from "js-cookie";
 import { GetServerSidePropsContext } from "next";
 
@@ -12,7 +13,7 @@ export const getJwt = (ctx?: GetServerSidePropsContext) => {
 };
 
 export const setJwt = (jwt: string) => {
-	Cookies.set(JWT_KEY, jwt, { expires: 365 });
+	Cookies.set(JWT_KEY, jwt, { expires: addHours(new Date(), 10) });
 };
 
 export const removeJwt = () => {

@@ -95,12 +95,7 @@ export const userProfile: QueryDescriptor<User | null> = () => [
 			return profile as User;
 		} catch (err) {
 			if (axios.isAxiosError(err)) {
-				if (
-					Number(err.response?.status) === 403 ||
-					Number(err.response?.status) === 400
-				) {
-					return null;
-				}
+				return null;
 			}
 			throw err;
 		}
@@ -201,19 +196,6 @@ export const calendarQueryAll: QueryDescriptor<CalDate[]> = () => [
 	"calendarQueryAll",
 	async () => {
 		const res = await API.getInstance().get<CalDate[]>(apiRoutes.calendarAll);
-
-		return res.data;
-	},
-];
-
-export const dateEditQuery: QueryDescriptor<CalDate, { id: string }> = (
-	params
-) => [
-	["dateEditQuery", params?.id],
-	async ({ queryKey }) => {
-		const res = await API.getInstance().get<CalDate>(
-			apiRoutes.dateFull(queryKey[1] as string)
-		);
 
 		return res.data;
 	},
